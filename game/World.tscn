@@ -138,4 +138,10 @@ shape = SubResource( 7 )
 [node name="Node2D" parent="." instance=ExtResource( 15 )]
 position = Vector2( 1492, -126 )
 
+[node name="Node2D2" parent="." instance=ExtResource( 15 )]
+position = Vector2( 2569, -133 )
+
+[node name="Node2D3" parent="." instance=ExtResource( 15 )]
+position = Vector2( 3006, -133 )
+
 [connection signal="body_entered" from="KinematicBody2D/Area2D" to="KinematicBody2D" method="_on_Area2D_body_entered"]

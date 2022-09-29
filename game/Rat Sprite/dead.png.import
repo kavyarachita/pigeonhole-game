@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Untitled_Artwork-6.png-3662f48053490343dc9d05930c796e78.stex"
+path="res://.import/dead.png-01f7001885790e1ae4c7a98d33323f69.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://walk cycle/Untitled_Artwork-6.png"
-dest_files=[ "res://.import/Untitled_Artwork-6.png-3662f48053490343dc9d05930c796e78.stex" ]
+source_file="res://Rat Sprite/dead.png"
+dest_files=[ "res://.import/dead.png-01f7001885790e1ae4c7a98d33323f69.stex" ]
 
 [params]
 

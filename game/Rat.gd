@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 const SPEED = 10
-var GRAVITY = 15
+var GRAVITY = 25
 const MAXFALLSPEED = 600
 const MAXSPEED = 100
 
@@ -17,9 +17,13 @@ var idle = false
 var health = 100
 var isdead = false
 var handlingdeath = false
+var isstunned = false
 
 func take_damage(dmg):
 	print("damaged!!!")
+	$AnimatedSprite.play("Hurt")
+	isstunned = true
+	loopthres = 100
 	health -= dmg
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,11 +34,17 @@ func _physics_process(delta):
 		handlingdeath = true
 		loop = 0
 		loopthres = 30
-		$AnimatedSprite.flip_v = true
+		$AnimatedSprite.play("Dead")
 	elif isdead and handlingdeath:
 		loop += 1
 		if loop > loopthres:
 			self.queue_free()
+	elif isstunned:
+		loop += 1
+		if loop > loopthres:
+			isstunned = false
+			loop = 0
+			loopthres = rng.randf_range(10,100)
 	else:
 		loop += 1
 		velocity = move_and_slide(velocity, Vector2.UP)
