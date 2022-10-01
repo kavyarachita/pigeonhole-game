@@ -13,7 +13,7 @@ var velocity = Vector2()
 func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("esc"):
-		get_tree().quit()
+		get_tree().change_scene("res://Menu.tscn")
 	
 	get_input()	
 	velocity = move_and_slide(velocity, Vector2.UP)
