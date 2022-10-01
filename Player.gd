@@ -9,6 +9,10 @@ var usedflap = false
 
 var velocity = Vector2()
 
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta):
+	get_input()	
+	velocity = move_and_slide(velocity, Vector2.UP)
 
 func get_input():
 	if velocity.y > MAXFALLSPEED:
@@ -21,20 +25,20 @@ func get_input():
 			velocity.x = MAXSPEED
 		else:
 			velocity.x += SPEED
-		$Sprite.play("walk")
-		$Sprite.flip_h = false
+		$AnimatedSprite.play("Walk")
+		$AnimatedSprite.flip_h = false
 	elif Input.is_action_pressed("left"):
 		if velocity.x > MAXSPEED:
 			velocity.x = MAXSPEED
 		else:
 			velocity.x -= SPEED
-		$Sprite.flip_h = true
-		$Sprite.play("walk")
+		$AnimatedSprite.flip_h = true
+		$AnimatedSprite.play("Walk")
 	else:
 		if Input.is_action_pressed("crouch"):
-			$Sprite.play("crouch")
+			$AnimatedSprite.play("Crouch")
 		else:
-			$Sprite.play("idle")
+			$AnimatedSprite.play("Idle")
 		velocity.x = lerp(velocity.x, 0, 0.2)
 		
 	if is_on_floor():
@@ -48,13 +52,8 @@ func get_input():
 		velocity.y += GRAVITY
 	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
-	get_input()	
-	print(velocity.y)
-	velocity = move_and_slide(velocity, Vector2.UP)
-
 func _on_Area2D_body_entered(body):
 	print("something hit")
 	if body.is_in_group("hurtbox"):
+		print("sometihin took damage")
 		body.take_damage(35)
