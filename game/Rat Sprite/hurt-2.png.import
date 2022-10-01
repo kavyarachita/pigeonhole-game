@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/stand.png-c144a379b42fafb13bdba4bfc8e72c98.stex"
+path="res://.import/hurt-2.png-0b379f5a9c800f6e90abe3377bdfbec5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://walk cycle/stand.png"
-dest_files=[ "res://.import/stand.png-c144a379b42fafb13bdba4bfc8e72c98.stex" ]
+source_file="res://Rat Sprite/hurt-2.png"
+dest_files=[ "res://.import/hurt-2.png-0b379f5a9c800f6e90abe3377bdfbec5.stex" ]
 
 [params]
 

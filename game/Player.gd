@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var GRAVITY = 30
+var GRAVITY = 35
 const MAXFALLSPEED = 3000
 const MAXSPEED = 500
 const JUMPFORCE = 1000
