@@ -11,6 +11,10 @@ var velocity = Vector2()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	
+	if Input.is_action_just_pressed("esc"):
+		get_tree().change_scene("res://Menu.tscn")
+	
 	get_input()	
 	velocity = move_and_slide(velocity, Vector2.UP)
 
