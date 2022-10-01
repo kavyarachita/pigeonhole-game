@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hurt-2.png-0b379f5a9c800f6e90abe3377bdfbec5.stex"
+path="res://.import/Untitled_Artwork-3 (1).png-e62cb55fecb44392896a714b65c52329.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Rat Sprite/hurt-2.png"
-dest_files=[ "res://.import/hurt-2.png-0b379f5a9c800f6e90abe3377bdfbec5.stex" ]
+source_file="res://Sprites/Rat Sprite/Untitled_Artwork-3 (1).png"
+dest_files=[ "res://.import/Untitled_Artwork-3 (1).png-e62cb55fecb44392896a714b65c52329.stex" ]
 
 [params]
 

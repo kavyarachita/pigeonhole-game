@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Untitled_Artwork-3 (1).png-306cec9dbf0b9ef09af1deaad052a8b0.stex"
+path="res://.import/crouch.png-218014e81aaafbba51da8c7136471690.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Rat Sprite/Untitled_Artwork-3 (1).png"
-dest_files=[ "res://.import/Untitled_Artwork-3 (1).png-306cec9dbf0b9ef09af1deaad052a8b0.stex" ]
+source_file="res://Sprites/Pigeon Sprite/crouch.png"
+dest_files=[ "res://.import/crouch.png-218014e81aaafbba51da8c7136471690.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/crouch.png-ba4161853e78795c765bea4ccd31e572.stex"
+path="res://.import/floor-tiles.png-686fcb7a4cf5f8ecd75baa4d6d5ccb2f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Pigeon Sprite/Walk Cycle/crouch.png"
-dest_files=[ "res://.import/crouch.png-ba4161853e78795c765bea4ccd31e572.stex" ]
+source_file="res://Sprites/World Sprites/floor-tiles.png"
+dest_files=[ "res://.import/floor-tiles.png-686fcb7a4cf5f8ecd75baa4d6d5ccb2f.stex" ]
 
 [params]
 

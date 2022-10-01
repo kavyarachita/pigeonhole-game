@@ -7,8 +7,8 @@ const MAXSPEED = 100
 
 var velocity = Vector2()
 
-var dirleft = false
-
+var dirleft = true
+var prev_dir = true # True = Left, False = Right
 var loop = 0
 var rng = RandomNumberGenerator.new()
 var loopthres = 100
@@ -25,6 +25,9 @@ func take_damage(dmg):
 	isstunned = true
 	loopthres = 100
 	health -= dmg
+
+func _flip_hitboxes():
+	scale.x = -1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -57,12 +60,14 @@ func _physics_process(delta):
 			velocity.y += GRAVITY
 		
 		if dirleft and not idle:
-			$AnimatedSprite.play("Walk")
-			$AnimatedSprite.flip_h = false
+			$AnimatedSprite.play("Walk")		
 			if velocity.x < -MAXSPEED:
 				velocity.x = -MAXSPEED
 			else:
 				velocity.x -= SPEED
+			if not prev_dir:
+				_flip_hitboxes()
+			prev_dir = true
 			if loop > loopthres:
 				print("Left?: ",dirleft,"   Idle?: ",idle,"   loop/thres: ",loop,"/",loopthres)
 				idle = true
@@ -71,11 +76,13 @@ func _physics_process(delta):
 				loop = 0
 		elif not dirleft and not idle:
 			$AnimatedSprite.play("Walk")
-			$AnimatedSprite.flip_h = true
 			if velocity.x > MAXSPEED:
 				velocity.x = MAXSPEED
 			else:
 				velocity.x += SPEED
+			if prev_dir:
+				_flip_hitboxes()
+			prev_dir = false
 			if loop > loopthres:
 				print("Left?: ",dirleft,"   Idle?: ",idle,"   loop/thres: ",loop,"/",loopthres)
 				idle = true
