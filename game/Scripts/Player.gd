@@ -6,6 +6,7 @@ const MAXSPEED = 500
 const JUMPFORCE = 1000
 var SPEED = 20
 var usedflap = false
+var prev_dir = false # True = Left, False = Right
 
 var velocity = Vector2()
 
@@ -17,6 +18,15 @@ func _physics_process(delta):
 	
 	get_input()	
 	velocity = move_and_slide(velocity, Vector2.UP)
+	
+	
+func _flip_hitboxes():
+	scale.x = -1
+	#$Area2D/CollisionShape2D.position.x *= -1
+	#$CollisionShape2D.position.x *= -1
+	#$CollisionShape2D2.position.x *= -1
+	#$Area2D/CollisionShape2D.rotation_degrees *= -1
+	#$CollisionShape2D2.rotation_degrees *= -1
 
 func get_input():
 	if velocity.y > MAXFALLSPEED:
@@ -30,14 +40,18 @@ func get_input():
 		else:
 			velocity.x += SPEED
 		$AnimatedSprite.play("Walk")
-		$AnimatedSprite.flip_h = false
+		if prev_dir:
+			_flip_hitboxes()
+		prev_dir = false
 	elif Input.is_action_pressed("left"):
 		if velocity.x > MAXSPEED:
 			velocity.x = MAXSPEED
 		else:
 			velocity.x -= SPEED
-		$AnimatedSprite.flip_h = true
 		$AnimatedSprite.play("Walk")
+		if not prev_dir:
+			_flip_hitboxes()
+		prev_dir = true
 	else:
 		if Input.is_action_pressed("crouch"):
 			$AnimatedSprite.play("Crouch")

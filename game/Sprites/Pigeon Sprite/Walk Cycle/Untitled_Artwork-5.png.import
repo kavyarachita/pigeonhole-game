@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex"
+path="res://.import/Untitled_Artwork-5.png-270d773a9d55a9a498f09b6a61d18396.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon.png"
-dest_files=[ "res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex" ]
+source_file="res://Sprites/Pigeon Sprite/Walk Cycle/Untitled_Artwork-5.png"
+dest_files=[ "res://.import/Untitled_Artwork-5.png-270d773a9d55a9a498f09b6a61d18396.stex" ]
 
 [params]
 

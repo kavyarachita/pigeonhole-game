@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/crouch.png-66a712f5413da2ea16b1a01a1296dffe.stex"
+path="res://.import/crouch.png-d85147848306296967f5a33ac60ccc50.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Pigeon Sprite/crouch.png"
-dest_files=[ "res://.import/crouch.png-66a712f5413da2ea16b1a01a1296dffe.stex" ]
+source_file="res://Sprites/Pigeon Sprite/Walk Cycle/crouch.png"
+dest_files=[ "res://.import/crouch.png-d85147848306296967f5a33ac60ccc50.stex" ]
 
 [params]
 
