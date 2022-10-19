@@ -84,7 +84,7 @@ rect_min_size = Vector2( 44, 0 )
 custom_fonts/font = SubResource( 3 )
 text = ">"
 
-[node name="StartButton" type="Button" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
+[node name="StartMenuButton" type="Button" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
 margin_left = 48.0
 margin_right = 380.0
 margin_bottom = 108.0
@@ -140,6 +140,6 @@ rect_min_size = Vector2( 332, 0 )
 custom_fonts/font = SubResource( 6 )
 text = "Quit"
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer/StartMenuButton" to="." method="_on_StartMenuButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/HBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/HBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

@@ -22,7 +22,7 @@ func _process(delta):
 		handle_selection(current_selection)
 
 
-func _on_StartButton_pressed(): #pressing the Start button will start the game
+func _on_StartMenuButton_pressed(): #pressing the Start button will start the game
 	get_tree().change_scene("res://World.tscn")
 
 func _on_OptionsButton_pressed(): #pressing the options button should show a static image of options
