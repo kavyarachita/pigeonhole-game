@@ -277,7 +277,7 @@ margin_right = 380.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 332, 0 )
 custom_fonts/font = SubResource( 13 )
-text = "Start"
+text = "Play"
 
 [node name="Label" type="Label" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
 margin_top = 104.0
@@ -285,7 +285,7 @@ margin_right = 540.0
 margin_bottom = 163.0
 theme = SubResource( 11 )
 custom_fonts/font = SubResource( 12 )
-text = "Click \"Start\" or \"P\" to keep going! 
+text = "Click \"Play\" or \"P\" to keep going! 
 You can hit \"P\" to pause or unpause at any time."
 align = 1
 
