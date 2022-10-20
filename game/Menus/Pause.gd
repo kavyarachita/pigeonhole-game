@@ -17,11 +17,10 @@ func _physics_process(delta):
 		get_tree().paused = false
 		get_tree().change_scene("res://Menu.tscn")
 
-"""
 onready var selector_one = $CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer/Label
 onready var selector_two = $CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer4/VBoxContainer/CenterContainer/HBoxContainer/Label
 onready var selector_three = $CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer3/VBoxContainer/CenterContainer/HBoxContainer/Label
-
+"""
 var current_selection = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -39,16 +38,20 @@ func _process(delta):
 	elif Input.is_action_just_pressed("ui_accept"):
 		handle_selection(current_selection)
 
-
-func _on_StartButton_pressed(): #pressing the Start button will start the game
+"""
+func _on_StartPauseButton_pressed(): #pressing the Start button will start the game
 	get_tree().paused = false
+	visible = false
 
-func _on_MenuButton_pressed(): #pressing the options button should show a static image of options
+func _on_MenuButton_pressed():
+	get_tree().paused = false 
 	get_tree().change_scene("res://Menu.tscn")
 
-func _on_QuitButton_pressed():
+func _on_RestartButton_pressed():
+	get_tree().paused = false
 	get_tree().change_scene("res://World.tscn")
 
+"""
 func handle_selection(_current_selection):
 	if _current_selection == 0:
 		get_tree().paused = false
@@ -56,7 +59,7 @@ func handle_selection(_current_selection):
 		get_tree().change_scene("res://Menu.tscn")
 	elif _current_selection == 2:
 		get_tree().change_scene("res://World.tscn")
-
+		
 func set_current_selection(_current_selection):
 	selector_one.text = ""
 	selector_two.text = ""

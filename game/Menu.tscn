@@ -1,7 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Menu.gd" type="Script" id=1]
-
 [ext_resource path="res://Milky Coffee.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=2]
@@ -81,12 +80,11 @@ margin_bottom = 108.0
 [node name="Arrow" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
 margin_right = 44.0
 margin_bottom = 108.0
-
 rect_min_size = Vector2( 44, 0 )
 custom_fonts/font = SubResource( 3 )
 text = ">"
 
-[node name="StartButton" type="Button" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
+[node name="StartMenuButton" type="Button" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
 margin_left = 48.0
 margin_right = 380.0
 margin_bottom = 108.0
@@ -142,6 +140,6 @@ rect_min_size = Vector2( 332, 0 )
 custom_fonts/font = SubResource( 6 )
 text = "Quit"
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer/StartMenuButton" to="." method="_on_StartMenuButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/HBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/HBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

@@ -23,7 +23,6 @@
 [ext_resource path="res://Sprites/Pigeon Sprite/Peck Attack/Untitled_Artwork-1.png" type="Texture" id=21]
 [ext_resource path="res://Sprites/Pigeon Sprite/Peck Attack/Untitled_Artwork-4.png" type="Texture" id=22]
 [ext_resource path="res://Menus/Pause.gd" type="Script" id=23]
-[ext_resource path="res://Extrude.ttf" type="DynamicFontData" id=24]
 [ext_resource path="res://Milky Coffee.ttf" type="DynamicFontData" id=25]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
@@ -116,9 +115,9 @@ font_data = ExtResource( 25 )
 
 [sub_resource type="DynamicFont" id=9]
 size = 100
-font_data = ExtResource( 24 )
+font_data = ExtResource( 25 )
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=13]
 size = 80
 font_data = ExtResource( 25 )
 
@@ -126,6 +125,10 @@ font_data = ExtResource( 25 )
 
 [sub_resource type="DynamicFont" id=12]
 size = 25
+font_data = ExtResource( 25 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 80
 font_data = ExtResource( 25 )
 
 [node name="WorldNode" type="Node2D"]
@@ -226,9 +229,9 @@ rect_rotation = 0.30243
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Pause/CenterContainer"]
 margin_left = 666.0
-margin_top = 193.0
+margin_top = 181.0
 margin_right = 1252.0
-margin_bottom = 872.0
+margin_bottom = 884.0
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer"]
 margin_right = 586.0
@@ -249,7 +252,7 @@ margin_bottom = 345.0
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer2"]
 margin_left = 23.0
 margin_right = 563.0
-margin_bottom = 163.0
+margin_bottom = 171.0
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
 margin_right = 540.0
@@ -258,22 +261,23 @@ margin_bottom = 100.0
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer"]
 margin_left = 80.0
 margin_right = 460.0
-margin_bottom = 100.0
+margin_bottom = 108.0
 
 [node name="Label" type="Label" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
+visible = false
 margin_right = 44.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 44, 0 )
 custom_fonts/font = SubResource( 9 )
 text = ">"
 
-[node name="StartButton" type="Button" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
+[node name="StartPauseButton" type="Button" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
 margin_left = 48.0
 margin_right = 380.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 332, 0 )
-custom_fonts/font = SubResource( 10 )
-text = "Start"
+custom_fonts/font = SubResource( 13 )
+text = "Play"
 
 [node name="Label" type="Label" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
 margin_top = 104.0
@@ -281,7 +285,7 @@ margin_right = 540.0
 margin_bottom = 163.0
 theme = SubResource( 11 )
 custom_fonts/font = SubResource( 12 )
-text = "Click \"Start\" or \"P\" to keep going! 
+text = "Click \"Play\" or \"P\" to keep going! 
 You can hit \"P\" to pause or unpause at any time."
 align = 1
 
@@ -292,7 +296,7 @@ margin_bottom = 512.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer4"]
 margin_right = 586.0
-margin_bottom = 163.0
+margin_bottom = 171.0
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer4/VBoxContainer"]
 margin_right = 586.0
@@ -301,9 +305,10 @@ margin_bottom = 100.0
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer4/VBoxContainer/CenterContainer"]
 margin_left = 103.0
 margin_right = 483.0
-margin_bottom = 100.0
+margin_bottom = 108.0
 
 [node name="Label" type="Label" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer4/VBoxContainer/CenterContainer/HBoxContainer"]
+visible = false
 margin_right = 44.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 44, 0 )
@@ -336,7 +341,7 @@ margin_bottom = 679.0
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer3"]
 margin_left = 88.0
 margin_right = 497.0
-margin_bottom = 163.0
+margin_bottom = 171.0
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer3/VBoxContainer"]
 margin_right = 409.0
@@ -345,9 +350,10 @@ margin_bottom = 100.0
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer3/VBoxContainer/CenterContainer"]
 margin_left = 14.0
 margin_right = 394.0
-margin_bottom = 100.0
+margin_bottom = 108.0
 
 [node name="Label" type="Label" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer3/VBoxContainer/CenterContainer/HBoxContainer"]
+visible = false
 margin_right = 44.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 44, 0 )
@@ -373,3 +379,6 @@ You can also restart from the menu."
 align = 1
 
 [connection signal="body_entered" from="Player/Area2D" to="Player" method="_on_Area2D_body_entered"]
+[connection signal="pressed" from="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer/StartPauseButton" to="CanvasLayer/Pause" method="_on_StartPauseButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer4/VBoxContainer/CenterContainer/HBoxContainer/MenuButton" to="CanvasLayer/Pause" method="_on_MenuButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer3/VBoxContainer/CenterContainer/HBoxContainer/RestartButton" to="CanvasLayer/Pause" method="_on_RestartButton_pressed"]
