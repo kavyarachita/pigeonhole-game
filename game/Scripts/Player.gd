@@ -7,6 +7,11 @@ const JUMPFORCE = 1000
 var SPEED = 20
 var usedflap = false
 var prev_dir = false # True = Left, False = Right
+var isAttacking = false
+
+# weapons
+
+
 
 var velocity = Vector2()
 
@@ -28,18 +33,31 @@ func _flip_hitboxes():
 	#$Area2D/CollisionShape2D.rotation_degrees *= -1
 	#$CollisionShape2D2.rotation_degrees *= -1
 
+func _attack():
+	isAttacking = true
+	for enemy in $Area2D.get_overlapping_bodies():
+		if enemy.is_in_group("hurtbox"):
+			print("something took damage")
+			enemy.take_damage(35)
+		
+
 func get_input():
 	if velocity.y > MAXFALLSPEED:
 		velocity.y = MAXFALLSPEED
 	
 	velocity.x = clamp(velocity.x, -MAXSPEED, MAXSPEED)
+	if Input.is_action_just_pressed("attack"):
+		print("attacking")
+		$AnimatedSprite.play("Peck")
+		_attack()
 	
 	if Input.is_action_pressed("right"):
 		if velocity.x < -MAXSPEED:
 			velocity.x = MAXSPEED
 		else:
 			velocity.x += SPEED
-		$AnimatedSprite.play("Walk")
+		if not isAttacking:
+			$AnimatedSprite.play("Walk")
 		if prev_dir:
 			_flip_hitboxes()
 		prev_dir = false
@@ -48,14 +66,15 @@ func get_input():
 			velocity.x = MAXSPEED
 		else:
 			velocity.x -= SPEED
-		$AnimatedSprite.play("Walk")
+		if not isAttacking:
+			$AnimatedSprite.play("Walk")
 		if not prev_dir:
 			_flip_hitboxes()
 		prev_dir = true
 	else:
-		if Input.is_action_pressed("crouch"):
+		if Input.is_action_pressed("crouch") and not isAttacking:
 			$AnimatedSprite.play("Crouch")
-		else:
+		elif not isAttacking:
 			$AnimatedSprite.play("Idle")
 		velocity.x = lerp(velocity.x, 0, 0.2)
 		
@@ -68,10 +87,7 @@ func get_input():
 			velocity.y = -JUMPFORCE
 			usedflap = true
 		velocity.y += GRAVITY
-	
 
-func _on_Area2D_body_entered(body):
-	print("something hit")
-	if body.is_in_group("hurtbox"):
-		print("sometihin took damage")
-		body.take_damage(35)
+func _on_AnimatedSprite_animation_finished():
+	if $AnimatedSprite.animation == "Peck":
+		isAttacking = false
