@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Untitled_Artwork-4-1.png-c7615339dfad8dbd61d4c43d2653ffb5.stex"
+path="res://.import/Group 25.png-2e9892538f342d852ae9259b35ae3fb9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Pigeon Sprite/Peck Attack/Untitled_Artwork-4-1.png"
-dest_files=[ "res://.import/Untitled_Artwork-4-1.png-c7615339dfad8dbd61d4c43d2653ffb5.stex" ]
+source_file="res://Sprites/Pigeon Sprite/Idle Knife/Group 25.png"
+dest_files=[ "res://.import/Group 25.png-2e9892538f342d852ae9259b35ae3fb9.stex" ]
 
 [params]
 
