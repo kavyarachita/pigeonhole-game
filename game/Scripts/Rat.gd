@@ -15,15 +15,12 @@ var loopthres = 100
 var idle = false
 
 var health = 100
-var isdead = false
-var handlingdeath = false
 var isstunned = false
 
 func take_damage(dmg):
 	print("damaged!!!")
 	$AnimatedSprite.play("Hurt")
 	isstunned = true
-	loopthres = 100
 	health -= dmg
 
 func _flip_hitboxes():
@@ -32,22 +29,7 @@ func _flip_hitboxes():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if health <= 0:
-		isdead = true
-	if isdead and not handlingdeath:
-		handlingdeath = true
-		loop = 0
-		loopthres = 30
 		$AnimatedSprite.play("Dead")
-	elif isdead and handlingdeath:
-		loop += 1
-		if loop > loopthres:
-			self.queue_free()
-	elif isstunned:
-		loop += 1
-		if loop > loopthres:
-			isstunned = false
-			loop = 0
-			loopthres = rng.randf_range(10,100)
 	else:
 		loop += 1
 		velocity = move_and_slide(velocity, Vector2.UP)
@@ -69,7 +51,7 @@ func _physics_process(delta):
 				_flip_hitboxes()
 			prev_dir = true
 			if loop > loopthres:
-				print("Left?: ",dirleft,"   Idle?: ",idle,"   loop/thres: ",loop,"/",loopthres)
+				#print("Left?: ",dirleft,"   Idle?: ",idle,"   loop/thres: ",loop,"/",loopthres)
 				idle = true
 				loopthres = rng.randf_range(10,100)
 				dirleft = false
@@ -84,16 +66,24 @@ func _physics_process(delta):
 				_flip_hitboxes()
 			prev_dir = false
 			if loop > loopthres:
-				print("Left?: ",dirleft,"   Idle?: ",idle,"   loop/thres: ",loop,"/",loopthres)
+				#print("Left?: ",dirleft,"   Idle?: ",idle,"   loop/thres: ",loop,"/",loopthres)
 				idle = true
 				loopthres = rng.randf_range(10,100)
 				loop = 0
 				dirleft = true
-		else:
+		elif not isstunned:
 			$AnimatedSprite.play("Idle")
 			velocity.x = lerp(velocity.x, 0, 0.2)
 			if loop > loopthres:
-				print("Left?: ",dirleft,"   Idle?: ",idle,"   loop/thres: ",loop,"/",loopthres)
+				#print("Left?: ",dirleft,"   Idle?: ",idle,"   loop/thres: ",loop,"/",loopthres)
 				idle = false
 				loopthres = rng.randf_range(100,300)
 				loop = 0
+
+
+func _on_AnimatedSprite_animation_finished():
+	if $AnimatedSprite.animation == "Hurt":
+		isstunned = false
+	if $AnimatedSprite.animation == "Dead":
+		self.queue_free()
+				
