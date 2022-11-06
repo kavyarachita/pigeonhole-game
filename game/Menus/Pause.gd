@@ -51,6 +51,7 @@ func _on_RestartButton_pressed():
 	get_tree().paused = false
 	get_tree().change_scene("res://World.tscn")
 
+
 """
 func handle_selection(_current_selection):
 	if _current_selection == 0:

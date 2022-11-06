@@ -5,6 +5,7 @@ onready var selector_two = $CenterContainer/VBoxContainer/CenterContainer2/VBoxC
 onready var selector_three = $CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/HBoxContainer/Arrow
 
 var current_selection = 0
+var cutscene_class = load("res://Cut Scenes/CutscenePlayer.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,7 +24,7 @@ func _process(delta):
 
 
 func _on_StartMenuButton_pressed(): #pressing the Start button will start the game
-	get_tree().change_scene("res://World.tscn")
+	get_parent().add_child(cutscene_class.instance())
 
 func _on_OptionsButton_pressed(): #pressing the options button should show a static image of options
 	var options = load("res://Menus/Options.tscn").instance()
