@@ -289,11 +289,10 @@ stream = ExtResource( 18 )
 autoplay = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
-visible = false
 show_behind_parent = true
-margin_left = -1.0
+margin_left = -1427.0
 margin_top = -1071.0
-margin_right = 8054.0
+margin_right = 11078.0
 margin_bottom = 9.0
 rect_pivot_offset = Vector2( 2695, 981 )
 texture = ExtResource( 17 )
