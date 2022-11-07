@@ -33,3 +33,4 @@ How to make changes:
 6. Commit your changes using `git commit -m <message here>`
 7. Push your changes using `git push`
 8. Go to Github.com and open a pull request
+
