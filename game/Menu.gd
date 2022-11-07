@@ -5,7 +5,6 @@ onready var selector_two = $CenterContainer/VBoxContainer/CenterContainer2/VBoxC
 onready var selector_three = $CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/HBoxContainer/Arrow
 
 var current_selection = 0
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_current_selection(0)
