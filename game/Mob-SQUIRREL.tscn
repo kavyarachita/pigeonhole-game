@@ -1,0 +1,51 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Sprites/Squirrel Sprite/IMG_0708.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/Squirrel Sprite/IMG_0707.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Squirrel Sprite/IMG_0709.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Squirrel Sprite/IMG_0710.png" type="Texture" id=4]
+[ext_resource path="res://squirrel.gd" type="Script" id=5]
+[ext_resource path="res://Sprites/Squirrel Sprite/Untitled_Artwork (4).png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Squirrel Sprite/Untitled_Artwork (3).png" type="Texture" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 6 ) ],
+"loop": false,
+"name": "Dead",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": false,
+"name": "Hurt",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 107.5, 114.5 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Squirrel" type="KinematicBody2D" parent="." groups=["hurtbox"]]
+collision_layer = 2
+script = ExtResource( 5 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Squirrel"]
+frames = SubResource( 1 )
+animation = "Walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Squirrel"]
+position = Vector2( 3, 13 )
+shape = SubResource( 2 )
+
+[connection signal="animation_finished" from="Squirrel/AnimatedSprite" to="Squirrel" method="_on_AnimatedSprite_animation_finished"]
