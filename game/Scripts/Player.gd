@@ -137,4 +137,7 @@ func _on_Head_animation_finished():
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("hurtbox"):
 		print("something took damage")
-		body.take_damage(20)
+		if weapon == 0:
+			body.take_damage(10)
+		elif weapon == 1:
+			body.take_damage(25)
