@@ -1,12 +1,25 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Rat Sprite/Untitled_Artwork-2 (1).png" type="Texture" id=1]
-[ext_resource path="res://Rat Sprite/Untitled_Artwork-1 (1).png" type="Texture" id=2]
-[ext_resource path="res://Rat Sprite/Untitled_Artwork-3 (1).png" type="Texture" id=3]
-[ext_resource path="res://Rat.gd" type="Script" id=4]
+[ext_resource path="res://Sprites/Rat Sprite/Untitled_Artwork-2 (1).png" type="Texture" id=1]
+[ext_resource path="res://Sprites/Rat Sprite/Untitled_Artwork-1 (1).png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Rat Sprite/Untitled_Artwork-3 (1).png" type="Texture" id=3]
+[ext_resource path="res://Scripts/Rat.gd" type="Script" id=4]
+[ext_resource path="res://Sprites/Rat Sprite/hurt-2.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Rat Sprite/hurt-1.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Rat Sprite/dead.png" type="Texture" id=7]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 7 ) ],
+"loop": false,
+"name": "Dead",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 5 ) ],
+"loop": false,
+"name": "Hurt",
+"speed": 4.0
+}, {
 "frames": [ ExtResource( 1 ) ],
 "loop": true,
 "name": "Idle",
@@ -19,19 +32,22 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 59.0
-height = 130.0
+radius = 57.9999
+height = 110.0
 
 [node name="Node2D" type="Node2D"]
 
-[node name="KinematicBody2D" type="KinematicBody2D" parent="." groups=["hurtbox"]]
+[node name="Rat" type="KinematicBody2D" parent="." groups=["hurtbox"]]
+collision_layer = 2
 script = ExtResource( 4 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="KinematicBody2D"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Rat"]
 frames = SubResource( 1 )
 animation = "Idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
-position = Vector2( -7, 43 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rat"]
+position = Vector2( 3, 46 )
 rotation = 1.5708
 shape = SubResource( 2 )
+
+[connection signal="animation_finished" from="Rat/AnimatedSprite" to="Rat" method="_on_AnimatedSprite_animation_finished"]
