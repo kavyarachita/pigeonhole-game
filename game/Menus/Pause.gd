@@ -17,9 +17,9 @@ func _physics_process(delta):
 		get_tree().paused = false
 		get_tree().change_scene("res://Menu.tscn")
 
-onready var selector_one = $CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer/Label
-onready var selector_two = $CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer4/VBoxContainer/CenterContainer/HBoxContainer/Label
-onready var selector_three = $CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer3/VBoxContainer/CenterContainer/HBoxContainer/Label
+#onready var selector_one = $CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer/Label
+#onready var selector_two = $CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer4/VBoxContainer/CenterContainer/HBoxContainer/Label
+#onready var selector_three = $CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer3/VBoxContainer/CenterContainer/HBoxContainer/Label
 """
 var current_selection = 0
 

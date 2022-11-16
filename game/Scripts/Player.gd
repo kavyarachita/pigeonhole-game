@@ -9,6 +9,7 @@ var usedflap = false
 var prev_dir = false # True = Left, False = Right
 var isAttacking = false
 
+var knifeunlocked = false
 # weapons
 var weapon = 0
 # 0 - peck, 1 - knife, 
@@ -31,19 +32,19 @@ func _flip_hitboxes():
 func _crouch():
 	$CollisionShape2D2.position.y = -7
 	$CollisionShape2D.position.y = 55
-	$Area2D/PeckRange.position.y = 45
-	$Area2D/PeckRange.scale.y = 0.9
-	$Area2D/KnifeRange.position.y = 20
-	$Area2D/KnifeRange.scale.y = 0.9
+	$AttackRange/PeckRange.position.y = 45
+	$AttackRange/PeckRange.scale.y = 0.9
+	$AttackRange/KnifeRange.position.y = 20
+	$AttackRange/KnifeRange.scale.y = 0.9
 	$Head.position.y = -40
 	
 func _uncrouch():
 	$CollisionShape2D2.position.y = -27
 	$CollisionShape2D.position.y = 60
-	$Area2D/PeckRange.position.y = 40
-	$Area2D/PeckRange.scale.y = 1
-	$Area2D/KnifeRange.position.y = 10
-	$Area2D/KnifeRange.scale.y = 1
+	$AttackRange/PeckRange.position.y = 40
+	$AttackRange/PeckRange.scale.y = 1
+	$AttackRange/KnifeRange.position.y = 10
+	$AttackRange/KnifeRange.scale.y = 1
 	$Head.position.y = -60
 
 #func _attack():
@@ -66,10 +67,10 @@ func get_input():
 		
 		if weapon == 0:
 			$Head.play("Peck")
-			$Area2D/PeckRange.disabled = false
+			$AttackRange/PeckRange.disabled = false
 		elif weapon == 1:
 			$Head.play("Knife Attack")
-			$Area2D/KnifeRange.disabled = false
+			$AttackRange/KnifeRange.disabled = false
 		isAttacking = true
 		
 	if not isAttacking:
@@ -109,7 +110,7 @@ func get_input():
 	else: 
 		maxspeed = 500
 		
-	if Input.is_action_just_pressed("knife"):
+	if Input.is_action_just_pressed("knife") and knifeunlocked:
 		weapon = 1
 	elif Input.is_action_just_pressed("unequip"):
 		weapon = 0
@@ -127,10 +128,10 @@ func get_input():
 
 func _on_Head_animation_finished():
 	if $Head.animation == "Peck":
-		$Area2D/PeckRange.disabled = true
+		$AttackRange/PeckRange.disabled = true
 		isAttacking = false
 	if $Head.animation == "Knife Attack":
-		$Area2D/KnifeRange.disabled = true
+		$AttackRange/KnifeRange.disabled = true
 		isAttacking = false
 
 
@@ -141,3 +142,11 @@ func _on_Area2D_body_entered(body):
 			body.take_damage(10)
 		elif weapon == 1:
 			body.take_damage(25)
+
+func _on_PickupRange_area_entered(area):
+	if area.is_in_group("pickup"):
+		if area.is_in_group("weapon"):
+			if area.is_in_group("knife"):
+				knifeunlocked = true
+				area.get_parent().queue_free()
+				weapon = 1
