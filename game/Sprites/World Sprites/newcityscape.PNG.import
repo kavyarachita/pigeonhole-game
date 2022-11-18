@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/knife2.png-3afae94cd3ebe480abbf2966083508e0.stex"
+path="res://.import/newcityscape.PNG-953830c04db0623ad6301f66f4f2143c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Knife sprite/knife2.png"
-dest_files=[ "res://.import/knife2.png-3afae94cd3ebe480abbf2966083508e0.stex" ]
+source_file="res://Sprites/World Sprites/newcityscape.PNG"
+dest_files=[ "res://.import/newcityscape.PNG-953830c04db0623ad6301f66f4f2143c.stex" ]
 
 [params]
 

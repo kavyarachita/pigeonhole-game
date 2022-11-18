@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/knife2.png-3afae94cd3ebe480abbf2966083508e0.stex"
+path="res://.import/mailbox-fg.png-6dc5bdc903e01f600400c75ca255d672.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Knife sprite/knife2.png"
-dest_files=[ "res://.import/knife2.png-3afae94cd3ebe480abbf2966083508e0.stex" ]
+source_file="res://Sprites/World Sprites/mailbox-fg.png"
+dest_files=[ "res://.import/mailbox-fg.png-6dc5bdc903e01f600400c75ca255d672.stex" ]
 
 [params]
 
