@@ -14,6 +14,12 @@ var knifeunlocked = false
 var weapon = 0
 # 0 - peck, 1 - knife, 
 
+var health = 100
+var is_dead = false
+var is_stunned = false
+var is_immune = false
+var game_over = false
+
 var velocity = Vector2()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,13 +27,20 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("esc"):
 		get_tree().change_scene("res://Scenes/Menus/Menu.tscn")
-	
-	get_input()	
+	if is_dead:
+		handle_death()
+	elif is_stunned:
+		play_hurt()
+	elif not game_over: 
+		get_input()	
 	velocity = move_and_slide(velocity, Vector2.UP)
-	
+
+func handle_death():
+	$Head.play("Dead")
 	
 func _flip_hitboxes():
 	scale.x *= -1
+	$Camera2D.scale.x *= -1
 
 func _crouch():
 	$CollisionShape2D2.position.y = -7
@@ -120,11 +133,26 @@ func get_input():
 		if Input.is_action_just_pressed("jump"):
 			velocity.y = -JUMPFORCE
 	else: 
+		$Butt.play("Falling")
 		if usedflap == false and Input.is_action_just_pressed("jump"):
 			velocity.y = -JUMPFORCE
 			usedflap = true
 		velocity.y += GRAVITY
+		
+func hurt(damage):
+	health -= damage
+	health = clamp(health, 0, 100)
+	print("player hurt - current health ", health)
+	$Camera2D/Label.text = str(health)
+	is_stunned = true
+	if health <= 0:
+		is_dead = true
 
+func play_hurt():
+	if $Head.animation != "Hurt":
+		$Head.play("Hurt")
+	if $Butt.animation != "Hurt":
+		$Butt.play("Hurt")
 
 func _on_Head_animation_finished():
 	if $Head.animation == "Peck":
@@ -133,6 +161,14 @@ func _on_Head_animation_finished():
 	if $Head.animation == "Knife Attack":
 		$AttackRange/KnifeRange.disabled = true
 		isAttacking = false
+	if $Head.animation == "Hurt":
+		is_stunned = false
+		$invincibility_timer.start()
+		$Head.play("Head Idle")
+		is_immune = true
+	if $Head.animation == "Dead":
+		self.queue_free()
+		game_over = true
 
 
 func _on_Area2D_body_entered(body):
@@ -150,3 +186,9 @@ func _on_PickupRange_area_entered(area):
 				knifeunlocked = true
 				area.get_parent().queue_free()
 				weapon = 1
+
+
+func _on_invincibility_timer_timeout():
+	is_immune = false
+	$invincibility_timer.stop()
+	

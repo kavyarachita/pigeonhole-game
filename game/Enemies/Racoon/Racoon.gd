@@ -1,8 +1,8 @@
 extends "res://Enemies/enemy.gd"
 
 func _ready():
-	health = 75
-	mob_damage = 5
+	health = 85
+	mob_damage = 7
 
 
 func _on_PlayerCloseDetectionArea_body_entered(body):

@@ -11,11 +11,14 @@ var _is_facing_left = true
 var velocity = Vector2()
 var _is_dying = false
 var _is_stunned = false
+var mob_damage = 2
+var just_attacked = false
 
 onready var _animated_sprite: AnimatedSprite = $AnimatedSprite
 onready var _collision_shape: CollisionShape2D = $CollisionShape2D
 onready var _player_close_area: Area2D = $PlayerCloseDetectionArea
 onready var _player_near_area: Area2D = $PlayerNearDetectionArea
+onready var _attack_wait_timer: Timer = $attack_timer
 
 var player_is_near := false
 var can_attack_player := false
@@ -51,11 +54,6 @@ func turn_towards_player():
 		if (dist > 0 and _is_facing_left) or (dist <= 0 and not _is_facing_left):
 			turn_around()
 
-func attack():
-	if _animated_sprite.animation != "Hurt":
-		_animated_sprite.speed_scale = 1.0
-		_animated_sprite.play("Hurt")
-
 
 func is_dead() -> bool:
 	return health <= 0
@@ -82,6 +80,14 @@ func stun() -> void:
 func _get_player() -> Node2D:
 	return player
 
+func attack() -> bool:
+	if player:
+		player.hurt(mob_damage)
+		if _animated_sprite.animation != "Attack" or !_animated_sprite.playing:
+			_animated_sprite.speed_scale = 1.0
+			_animated_sprite.play("Attack")
+		return true
+	return false
 
 func _move(speed: float) -> bool:
 	velocity.x = speed

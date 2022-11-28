@@ -28,5 +28,12 @@ func _on_PlayerNearDetectionArea_body_exited(body):
 func _on_AnimatedSprite_animation_finished():
 	if _animated_sprite.animation == "Dead":
 		self.queue_free()
-	elif _animated_sprite.animation == "Hurt":
+	if _animated_sprite.animation == "Hurt":
 		_is_stunned = false
+	if _animated_sprite.animation == "Attack":
+		$attack_timer.start()
+		idle()
+
+func _on_attack_timer_timeout():
+	just_attacked = false
+	$attack_timer.stop()
