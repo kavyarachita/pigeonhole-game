@@ -1,0 +1,167 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://Sprites/Rat Sprite/Untitled_Artwork-2 (1).png" type="Texture" id=1]
+[ext_resource path="res://Sprites/Rat Sprite/Untitled_Artwork-1 (1).png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Rat Sprite/Untitled_Artwork-3 (1).png" type="Texture" id=3]
+[ext_resource path="res://Enemies/Rat/rat.gd" type="Script" id=4]
+[ext_resource path="res://Sprites/Rat Sprite/hurt-2.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Rat Sprite/hurt-1.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Rat Sprite/dead.png" type="Texture" id=7]
+[ext_resource path="res://addons/behavior_tree/nodes/bt_root.gd" type="Script" id=8]
+[ext_resource path="res://addons/behavior_tree/nodes/composites/selector.gd" type="Script" id=9]
+[ext_resource path="res://Enemies/move towards player.gd" type="Script" id=10]
+[ext_resource path="res://addons/behavior_tree/nodes/composites/sequence.gd" type="Script" id=11]
+[ext_resource path="res://Enemies/player_detection_area.gd" type="Script" id=12]
+[ext_resource path="res://Enemies/Rat/is player near.gd" type="Script" id=13]
+[ext_resource path="res://Enemies/Rat/move forward.gd" type="Script" id=14]
+[ext_resource path="res://Enemies/Rat/turn towards player.gd" type="Script" id=15]
+[ext_resource path="res://Enemies/Rat/is dead.gd" type="Script" id=16]
+[ext_resource path="res://Enemies/Rat/death animation.gd" type="Script" id=17]
+[ext_resource path="res://Enemies/Rat/is stunned.gd" type="Script" id=18]
+[ext_resource path="res://Enemies/Rat/stun animation.gd" type="Script" id=19]
+[ext_resource path="res://Enemies/Rat/turn around.gd" type="Script" id=20]
+[ext_resource path="res://Enemies/Rat/is player close.gd" type="Script" id=21]
+[ext_resource path="res://Enemies/Rat/attack player.gd" type="Script" id=22]
+[ext_resource path="res://Enemies/Rat/is player attackable.gd" type="Script" id=23]
+[ext_resource path="res://Sprites/Rat Sprite/attack.png" type="Texture" id=26]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 26 ), ExtResource( 2 ) ],
+"loop": false,
+"name": "Attack",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": false,
+"name": "Dead",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 5 ) ],
+"loop": false,
+"name": "Hurt",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 57.9999
+height = 110.0
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 140, 50 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 450, 50 )
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 1, 0 )
+
+[node name="Rat" type="KinematicBody2D" parent="." groups=["enemy", "hurtbox"]]
+collision_layer = 2
+script = ExtResource( 4 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Rat"]
+frames = SubResource( 1 )
+animation = "Attack"
+frame = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rat"]
+position = Vector2( 3, 46 )
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="BehaviorTreeRoot" type="Node" parent="Rat"]
+script = ExtResource( 8 )
+
+[node name="SelectorComposite" type="Node" parent="Rat/BehaviorTreeRoot"]
+script = ExtResource( 9 )
+
+[node name="DeathEvent" type="Node" parent="Rat/BehaviorTreeRoot/SelectorComposite"]
+script = ExtResource( 11 )
+
+[node name="is dead" type="Node" parent="Rat/BehaviorTreeRoot/SelectorComposite/DeathEvent"]
+script = ExtResource( 16 )
+
+[node name="death animation" type="Node" parent="Rat/BehaviorTreeRoot/SelectorComposite/DeathEvent"]
+script = ExtResource( 17 )
+
+[node name="StunEvent" type="Node" parent="Rat/BehaviorTreeRoot/SelectorComposite"]
+script = ExtResource( 11 )
+
+[node name="is stunned" type="Node" parent="Rat/BehaviorTreeRoot/SelectorComposite/StunEvent"]
+script = ExtResource( 18 )
+
+[node name="stun animation" type="Node" parent="Rat/BehaviorTreeRoot/SelectorComposite/StunEvent"]
+script = ExtResource( 19 )
+
+[node name="AttackPlayer" type="Node" parent="Rat/BehaviorTreeRoot/SelectorComposite"]
+script = ExtResource( 11 )
+
+[node name="is player close" type="Node" parent="Rat/BehaviorTreeRoot/SelectorComposite/AttackPlayer"]
+script = ExtResource( 21 )
+
+[node name="is player attackable" type="Node" parent="Rat/BehaviorTreeRoot/SelectorComposite/AttackPlayer"]
+script = ExtResource( 23 )
+
+[node name="turn towards player2" type="Node" parent="Rat/BehaviorTreeRoot/SelectorComposite/AttackPlayer"]
+script = ExtResource( 15 )
+
+[node name="attack player" type="Node" parent="Rat/BehaviorTreeRoot/SelectorComposite/AttackPlayer"]
+script = ExtResource( 22 )
+
+[node name="ChasePlayer" type="Node" parent="Rat/BehaviorTreeRoot/SelectorComposite"]
+script = ExtResource( 11 )
+
+[node name="is player near" type="Node" parent="Rat/BehaviorTreeRoot/SelectorComposite/ChasePlayer"]
+script = ExtResource( 13 )
+
+[node name="turn towards player" type="Node" parent="Rat/BehaviorTreeRoot/SelectorComposite/ChasePlayer"]
+script = ExtResource( 15 )
+
+[node name="move towards player" type="Node" parent="Rat/BehaviorTreeRoot/SelectorComposite/ChasePlayer"]
+script = ExtResource( 10 )
+
+[node name="PatrolArea" type="Node" parent="Rat/BehaviorTreeRoot/SelectorComposite"]
+script = ExtResource( 9 )
+
+[node name="move forward" type="Node" parent="Rat/BehaviorTreeRoot/SelectorComposite/PatrolArea"]
+script = ExtResource( 14 )
+
+[node name="turn around" type="Node" parent="Rat/BehaviorTreeRoot/SelectorComposite/PatrolArea"]
+script = ExtResource( 20 )
+
+[node name="PlayerCloseDetectionArea" type="Area2D" parent="Rat"]
+collision_layer = 2
+script = ExtResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rat/PlayerCloseDetectionArea"]
+position = Vector2( 0, 40 )
+shape = SubResource( 3 )
+
+[node name="PlayerNearDetectionArea" type="Area2D" parent="Rat"]
+collision_layer = 2
+script = ExtResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rat/PlayerNearDetectionArea"]
+position = Vector2( 0, 40 )
+shape = SubResource( 4 )
+
+[node name="attack_timer" type="Timer" parent="Rat"]
+wait_time = 2.0
+
+[connection signal="animation_finished" from="Rat/AnimatedSprite" to="Rat" method="_on_AnimatedSprite_animation_finished"]
+[connection signal="body_entered" from="Rat/PlayerCloseDetectionArea" to="Rat" method="_on_PlayerCloseDetectionArea_body_entered"]
+[connection signal="body_exited" from="Rat/PlayerCloseDetectionArea" to="Rat" method="_on_PlayerCloseDetectionArea_body_exited"]
+[connection signal="body_entered" from="Rat/PlayerNearDetectionArea" to="Rat" method="_on_PlayerNearDetectionArea_body_entered"]
+[connection signal="body_exited" from="Rat/PlayerNearDetectionArea" to="Rat" method="_on_PlayerNearDetectionArea_body_exited"]
+[connection signal="timeout" from="Rat/attack_timer" to="Rat" method="_on_attack_timer_timeout"]

@@ -1,0 +1,169 @@
+[gd_scene load_steps=35 format=2]
+
+[ext_resource path="res://Enemies/Rat/turn towards player.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/Rat/turn around.gd" type="Script" id=2]
+[ext_resource path="res://Enemies/Rat/is dead.gd" type="Script" id=3]
+[ext_resource path="res://Enemies/Rat/move forward.gd" type="Script" id=4]
+[ext_resource path="res://Enemies/Rat/death animation.gd" type="Script" id=5]
+[ext_resource path="res://Enemies/Rat/is stunned.gd" type="Script" id=6]
+[ext_resource path="res://Enemies/Rat/is player near.gd" type="Script" id=7]
+[ext_resource path="res://Enemies/move towards player.gd" type="Script" id=8]
+[ext_resource path="res://Enemies/player_detection_area.gd" type="Script" id=9]
+[ext_resource path="res://Enemies/Rat/stun animation.gd" type="Script" id=10]
+[ext_resource path="res://addons/behavior_tree/nodes/bt_root.gd" type="Script" id=11]
+[ext_resource path="res://Enemies/Rat/is player close.gd" type="Script" id=12]
+[ext_resource path="res://Enemies/Rat/attack player.gd" type="Script" id=13]
+[ext_resource path="res://addons/behavior_tree/nodes/composites/sequence.gd" type="Script" id=14]
+[ext_resource path="res://addons/behavior_tree/nodes/composites/selector.gd" type="Script" id=15]
+[ext_resource path="res://Enemies/Rat/is player attackable.gd" type="Script" id=16]
+[ext_resource path="res://Sprites/Racoon Sprite/hurt-2.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/Racoon Sprite/idle/IMG_0733_1.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/Racoon Sprite/idle/IMG_0735.png" type="Texture" id=19]
+[ext_resource path="res://Sprites/Racoon Sprite/hurt-1.png" type="Texture" id=20]
+[ext_resource path="res://Sprites/Racoon Sprite/walk/IMG_0733_1.png" type="Texture" id=21]
+[ext_resource path="res://Sprites/Racoon Sprite/dead.png" type="Texture" id=22]
+[ext_resource path="res://Sprites/Racoon Sprite/attack/IMG_0735.png" type="Texture" id=23]
+[ext_resource path="res://Sprites/Racoon Sprite/attack/IMG_0738.png" type="Texture" id=24]
+[ext_resource path="res://Sprites/Racoon Sprite/walk/Untitled_Artwork-2.png" type="Texture" id=25]
+[ext_resource path="res://Sprites/Racoon Sprite/idle/IMG_0734.png" type="Texture" id=26]
+[ext_resource path="res://Sprites/Racoon Sprite/walk/Untitled_Artwork-3.png" type="Texture" id=27]
+[ext_resource path="res://Sprites/Racoon Sprite/idle/IMG_0736.png" type="Texture" id=28]
+[ext_resource path="res://Sprites/Racoon Sprite/attack/IMG_0737.png" type="Texture" id=29]
+[ext_resource path="res://Enemies/Racoon/Racoon.gd" type="Script" id=30]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 23 ), ExtResource( 29 ), ExtResource( 24 ), ExtResource( 29 ), ExtResource( 23 ) ],
+"loop": false,
+"name": "Attack",
+"speed": 6.0
+}, {
+"frames": [ ExtResource( 22 ) ],
+"loop": false,
+"name": "Dead",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 17 ), ExtResource( 20 ), ExtResource( 17 ) ],
+"loop": false,
+"name": "Hurt",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 26 ), ExtResource( 19 ), ExtResource( 28 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 25 ), ExtResource( 27 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 4.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 104.5, 111.625 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 170, 70 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 450, 50 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Racoon" type="KinematicBody2D" parent="." groups=["enemy", "hurtbox"]]
+collision_layer = 2
+script = ExtResource( 30 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Racoon"]
+frames = SubResource( 1 )
+animation = "Walk"
+frame = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Racoon"]
+position = Vector2( 6, 5 )
+shape = SubResource( 4 )
+
+[node name="BehaviorTreeRoot" type="Node" parent="Racoon"]
+script = ExtResource( 11 )
+
+[node name="SelectorComposite" type="Node" parent="Racoon/BehaviorTreeRoot"]
+script = ExtResource( 15 )
+
+[node name="DeathEvent" type="Node" parent="Racoon/BehaviorTreeRoot/SelectorComposite"]
+script = ExtResource( 14 )
+
+[node name="is dead" type="Node" parent="Racoon/BehaviorTreeRoot/SelectorComposite/DeathEvent"]
+script = ExtResource( 3 )
+
+[node name="death animation" type="Node" parent="Racoon/BehaviorTreeRoot/SelectorComposite/DeathEvent"]
+script = ExtResource( 5 )
+
+[node name="StunEvent" type="Node" parent="Racoon/BehaviorTreeRoot/SelectorComposite"]
+script = ExtResource( 14 )
+
+[node name="is stunned" type="Node" parent="Racoon/BehaviorTreeRoot/SelectorComposite/StunEvent"]
+script = ExtResource( 6 )
+
+[node name="stun animation" type="Node" parent="Racoon/BehaviorTreeRoot/SelectorComposite/StunEvent"]
+script = ExtResource( 10 )
+
+[node name="AttackPlayer" type="Node" parent="Racoon/BehaviorTreeRoot/SelectorComposite"]
+script = ExtResource( 14 )
+
+[node name="is player close" type="Node" parent="Racoon/BehaviorTreeRoot/SelectorComposite/AttackPlayer"]
+script = ExtResource( 12 )
+
+[node name="is player attackable" type="Node" parent="Racoon/BehaviorTreeRoot/SelectorComposite/AttackPlayer"]
+script = ExtResource( 16 )
+
+[node name="turn towards player2" type="Node" parent="Racoon/BehaviorTreeRoot/SelectorComposite/AttackPlayer"]
+script = ExtResource( 1 )
+
+[node name="attack player" type="Node" parent="Racoon/BehaviorTreeRoot/SelectorComposite/AttackPlayer"]
+script = ExtResource( 13 )
+
+[node name="ChasePlayer" type="Node" parent="Racoon/BehaviorTreeRoot/SelectorComposite"]
+script = ExtResource( 14 )
+
+[node name="is player near" type="Node" parent="Racoon/BehaviorTreeRoot/SelectorComposite/ChasePlayer"]
+script = ExtResource( 7 )
+
+[node name="turn towards player" type="Node" parent="Racoon/BehaviorTreeRoot/SelectorComposite/ChasePlayer"]
+script = ExtResource( 1 )
+
+[node name="move towards player" type="Node" parent="Racoon/BehaviorTreeRoot/SelectorComposite/ChasePlayer"]
+script = ExtResource( 8 )
+
+[node name="PatrolArea" type="Node" parent="Racoon/BehaviorTreeRoot/SelectorComposite"]
+script = ExtResource( 15 )
+
+[node name="move forward" type="Node" parent="Racoon/BehaviorTreeRoot/SelectorComposite/PatrolArea"]
+script = ExtResource( 4 )
+
+[node name="turn around" type="Node" parent="Racoon/BehaviorTreeRoot/SelectorComposite/PatrolArea"]
+script = ExtResource( 2 )
+
+[node name="PlayerCloseDetectionArea" type="Area2D" parent="Racoon"]
+collision_layer = 2
+script = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Racoon/PlayerCloseDetectionArea"]
+position = Vector2( 0, 40 )
+shape = SubResource( 2 )
+
+[node name="PlayerNearDetectionArea" type="Area2D" parent="Racoon"]
+collision_layer = 2
+script = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Racoon/PlayerNearDetectionArea"]
+position = Vector2( 0, 40 )
+shape = SubResource( 3 )
+
+[node name="attack_timer" type="Timer" parent="Racoon"]
+wait_time = 2.0
+
+[connection signal="animation_finished" from="Racoon/AnimatedSprite" to="Racoon" method="_on_AnimatedSprite_animation_finished"]
+[connection signal="body_entered" from="Racoon/PlayerCloseDetectionArea" to="Racoon" method="_on_PlayerCloseDetectionArea_body_entered"]
+[connection signal="body_exited" from="Racoon/PlayerCloseDetectionArea" to="Racoon" method="_on_PlayerCloseDetectionArea_body_exited"]
+[connection signal="body_entered" from="Racoon/PlayerNearDetectionArea" to="Racoon" method="_on_PlayerNearDetectionArea_body_entered"]
+[connection signal="timeout" from="Racoon/attack_timer" to="Racoon" method="_on_attack_timer_timeout"]

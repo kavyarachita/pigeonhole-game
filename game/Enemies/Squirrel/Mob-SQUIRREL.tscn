@@ -1,0 +1,169 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://Sprites/Squirrel Sprite/IMG_0708.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/Squirrel Sprite/IMG_0707.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Squirrel Sprite/IMG_0709.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Squirrel Sprite/IMG_0710.png" type="Texture" id=4]
+[ext_resource path="res://Enemies/Squirrel/squirrel.gd" type="Script" id=5]
+[ext_resource path="res://Sprites/Squirrel Sprite/Untitled_Artwork (4).png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Squirrel Sprite/Untitled_Artwork (3).png" type="Texture" id=7]
+[ext_resource path="res://Enemies/Rat/turn towards player.gd" type="Script" id=8]
+[ext_resource path="res://Enemies/Rat/turn around.gd" type="Script" id=9]
+[ext_resource path="res://Enemies/Rat/is dead.gd" type="Script" id=10]
+[ext_resource path="res://Enemies/Rat/move forward.gd" type="Script" id=11]
+[ext_resource path="res://Enemies/Rat/death animation.gd" type="Script" id=12]
+[ext_resource path="res://Enemies/Rat/is stunned.gd" type="Script" id=13]
+[ext_resource path="res://Enemies/Rat/is player near.gd" type="Script" id=14]
+[ext_resource path="res://Enemies/move towards player.gd" type="Script" id=15]
+[ext_resource path="res://Enemies/player_detection_area.gd" type="Script" id=16]
+[ext_resource path="res://Enemies/Rat/stun animation.gd" type="Script" id=17]
+[ext_resource path="res://addons/behavior_tree/nodes/bt_root.gd" type="Script" id=18]
+[ext_resource path="res://Enemies/Rat/is player close.gd" type="Script" id=19]
+[ext_resource path="res://Enemies/Rat/attack player.gd" type="Script" id=20]
+[ext_resource path="res://addons/behavior_tree/nodes/composites/sequence.gd" type="Script" id=21]
+[ext_resource path="res://addons/behavior_tree/nodes/composites/selector.gd" type="Script" id=22]
+[ext_resource path="res://Enemies/Rat/is player attackable.gd" type="Script" id=23]
+[ext_resource path="res://Sprites/Squirrel Sprite/attack/Untitled_Artwork-2.png" type="Texture" id=24]
+[ext_resource path="res://Sprites/Squirrel Sprite/attack/Untitled_Artwork-4.png" type="Texture" id=25]
+[ext_resource path="res://Sprites/Squirrel Sprite/attack/Untitled_Artwork-5.png" type="Texture" id=26]
+[ext_resource path="res://Sprites/Squirrel Sprite/attack/Untitled_Artwork-3.png" type="Texture" id=27]
+[ext_resource path="res://Sprites/Squirrel Sprite/attack/Untitled_Artwork-1.png" type="Texture" id=28]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 28 ), ExtResource( 24 ), ExtResource( 27 ), ExtResource( 25 ), ExtResource( 26 ) ],
+"loop": false,
+"name": "Attack",
+"speed": 9.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": false,
+"name": "Dead",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": false,
+"name": "Hurt",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 107.5, 114.5 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 160, 55 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 600, 50 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Squirrel" type="KinematicBody2D" parent="." groups=["enemy", "hurtbox"]]
+collision_layer = 2
+script = ExtResource( 5 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Squirrel"]
+frames = SubResource( 1 )
+animation = "Attack"
+frame = 4
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Squirrel"]
+position = Vector2( 3, 13 )
+shape = SubResource( 2 )
+
+[node name="BehaviorTreeRoot" type="Node" parent="Squirrel"]
+script = ExtResource( 18 )
+
+[node name="SelectorComposite" type="Node" parent="Squirrel/BehaviorTreeRoot"]
+script = ExtResource( 22 )
+
+[node name="DeathEvent" type="Node" parent="Squirrel/BehaviorTreeRoot/SelectorComposite"]
+script = ExtResource( 21 )
+
+[node name="is dead" type="Node" parent="Squirrel/BehaviorTreeRoot/SelectorComposite/DeathEvent"]
+script = ExtResource( 10 )
+
+[node name="death animation" type="Node" parent="Squirrel/BehaviorTreeRoot/SelectorComposite/DeathEvent"]
+script = ExtResource( 12 )
+
+[node name="StunEvent" type="Node" parent="Squirrel/BehaviorTreeRoot/SelectorComposite"]
+script = ExtResource( 21 )
+
+[node name="is stunned" type="Node" parent="Squirrel/BehaviorTreeRoot/SelectorComposite/StunEvent"]
+script = ExtResource( 13 )
+
+[node name="stun animation" type="Node" parent="Squirrel/BehaviorTreeRoot/SelectorComposite/StunEvent"]
+script = ExtResource( 17 )
+
+[node name="AttackPlayer" type="Node" parent="Squirrel/BehaviorTreeRoot/SelectorComposite"]
+script = ExtResource( 21 )
+
+[node name="is player close" type="Node" parent="Squirrel/BehaviorTreeRoot/SelectorComposite/AttackPlayer"]
+script = ExtResource( 19 )
+
+[node name="is player attackable" type="Node" parent="Squirrel/BehaviorTreeRoot/SelectorComposite/AttackPlayer"]
+script = ExtResource( 23 )
+
+[node name="turn towards player2" type="Node" parent="Squirrel/BehaviorTreeRoot/SelectorComposite/AttackPlayer"]
+script = ExtResource( 8 )
+
+[node name="attack player" type="Node" parent="Squirrel/BehaviorTreeRoot/SelectorComposite/AttackPlayer"]
+script = ExtResource( 20 )
+
+[node name="ChasePlayer" type="Node" parent="Squirrel/BehaviorTreeRoot/SelectorComposite"]
+script = ExtResource( 21 )
+
+[node name="is player near" type="Node" parent="Squirrel/BehaviorTreeRoot/SelectorComposite/ChasePlayer"]
+script = ExtResource( 14 )
+
+[node name="turn towards player" type="Node" parent="Squirrel/BehaviorTreeRoot/SelectorComposite/ChasePlayer"]
+script = ExtResource( 8 )
+
+[node name="move towards player" type="Node" parent="Squirrel/BehaviorTreeRoot/SelectorComposite/ChasePlayer"]
+script = ExtResource( 15 )
+
+[node name="PatrolArea" type="Node" parent="Squirrel/BehaviorTreeRoot/SelectorComposite"]
+script = ExtResource( 22 )
+
+[node name="move forward" type="Node" parent="Squirrel/BehaviorTreeRoot/SelectorComposite/PatrolArea"]
+script = ExtResource( 11 )
+
+[node name="turn around" type="Node" parent="Squirrel/BehaviorTreeRoot/SelectorComposite/PatrolArea"]
+script = ExtResource( 9 )
+
+[node name="PlayerCloseDetectionArea" type="Area2D" parent="Squirrel"]
+collision_layer = 2
+script = ExtResource( 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Squirrel/PlayerCloseDetectionArea"]
+position = Vector2( 0, 40 )
+shape = SubResource( 3 )
+
+[node name="PlayerNearDetectionArea" type="Area2D" parent="Squirrel"]
+collision_layer = 2
+script = ExtResource( 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Squirrel/PlayerNearDetectionArea"]
+position = Vector2( 0, 40 )
+shape = SubResource( 4 )
+
+[node name="attack_timer" type="Timer" parent="Squirrel"]
+wait_time = 2.0
+
+[connection signal="animation_finished" from="Squirrel/AnimatedSprite" to="Squirrel" method="_on_AnimatedSprite_animation_finished"]
+[connection signal="body_entered" from="Squirrel/PlayerCloseDetectionArea" to="Squirrel" method="_on_PlayerCloseDetectionArea_body_entered"]
+[connection signal="body_exited" from="Squirrel/PlayerCloseDetectionArea" to="Squirrel" method="_on_PlayerCloseDetectionArea_body_exited"]
+[connection signal="body_entered" from="Squirrel/PlayerNearDetectionArea" to="Squirrel" method="_on_PlayerNearDetectionArea_body_entered"]
+[connection signal="body_exited" from="Squirrel/PlayerNearDetectionArea" to="Squirrel" method="_on_PlayerNearDetectionArea_body_exited"]
+[connection signal="timeout" from="Squirrel/attack_timer" to="Squirrel" method="_on_attack_timer_timeout"]
