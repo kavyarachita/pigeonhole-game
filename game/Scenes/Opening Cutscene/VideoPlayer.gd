@@ -14,10 +14,10 @@ func _wait():
 	self.add_child(t)
 	t.start()
 	yield(t, "timeout")
-	get_tree().change_scene("res://Scenes/Menus/Menu.tscn")
+	get_tree().change_scene("res://Scenes/World/World.tscn")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 
 func _on_SkipIntroCutSceneButton_pressed():
-	get_tree().change_scene("res://Scenes/Menus/Menu.tscn")
+	get_tree().change_scene("res://Scenes/World/World.tscn")

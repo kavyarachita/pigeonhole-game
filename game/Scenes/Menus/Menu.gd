@@ -22,7 +22,8 @@ func _process(delta):
 
 
 func _on_StartMenuButton_pressed(): #pressing the Start button will start the game
-	get_tree().change_scene("res://Scenes/World/World.tscn")
+	get_tree().change_scene("res://Scenes/Opening Cutscene/VideoPlayer.tscn")
+	#get_tree().change_scene("res://Scenes/World/World.tscn")
 
 func _on_OptionsButton_pressed(): #pressing the options button should show a static image of options
 	var options = load("res://Scenes/Menus/Options.tscn").instance()
