@@ -24,7 +24,9 @@ var velocity = Vector2()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	
+	if Input.is_action_just_pressed("restart"):
+		get_tree().paused = false
+		get_tree().change_scene("res://Scenes/World/World.tscn")
 	if Input.is_action_just_pressed("esc"):
 		get_tree().change_scene("res://Scenes/Menus/Menu.tscn")
 	if is_dead:

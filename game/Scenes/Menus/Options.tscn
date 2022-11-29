@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Menus/Options.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Menus/Milky Coffee.ttf" type="DynamicFontData" id=2]
@@ -9,6 +9,14 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 50
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 100
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 59
 font_data = ExtResource( 2 )
 
 [node name="Options" type="ColorRect"]
@@ -57,3 +65,27 @@ P - pause
 
 ESC - quit to menu"
 align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 1710.0
+margin_top = 951.0
+margin_right = 1908.0
+margin_bottom = 1059.0
+rect_pivot_offset = Vector2( 85, 53 )
+
+[node name="Arrow" type="Label" parent="HBoxContainer"]
+margin_right = 44.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 44, 0 )
+custom_fonts/font = SubResource( 7 )
+text = ">"
+
+[node name="BackButton" type="Button" parent="HBoxContainer"]
+margin_left = 48.0
+margin_right = 198.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 150, 0 )
+custom_fonts/font = SubResource( 6 )
+text = "Back"
+
+[connection signal="pressed" from="HBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]

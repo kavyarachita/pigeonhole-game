@@ -34,7 +34,7 @@ func _on_QuitButton_pressed():
 
 func handle_selection(_current_selection):
 	if _current_selection == 0:
-		get_tree().change_scene("res://Scenes/World/World.tscn")
+		get_tree().change_scene("res://Scenes/Opening Cutscene/VideoPlayer.tscn")
 	elif _current_selection == 1:
 		var options = load("res://Scenes/Menus/Options.tscn").instance()
 		get_tree().current_scene.add_child(options)
