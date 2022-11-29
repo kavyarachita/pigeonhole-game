@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=2]
+[gd_scene load_steps=99 format=2]
 
 [ext_resource path="res://Enemies/Rat/Mob-RAT.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/World Sprites/sky.png" type="Texture" id=2]
@@ -392,6 +392,18 @@ font_data = ExtResource( 5 )
 size = 80
 font_data = ExtResource( 5 )
 
+[sub_resource type="DynamicFont" id=29]
+size = 166
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=30]
+size = 50
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=28]
+size = 45
+font_data = ExtResource( 5 )
+
 [node name="WorldNode" type="Node2D"]
 script = ExtResource( 3 )
 
@@ -402,7 +414,6 @@ scale = Vector2( 1.3, 1.3 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="knife object"]
 position = Vector2( 4932.31, 2971.54 )
 frames = SubResource( 24 )
-frame = 5
 playing = true
 
 [node name="Area2D" type="Area2D" parent="knife object" groups=["knife", "pickup", "weapon"]]
@@ -563,44 +574,48 @@ margin_right = 1919.0
 margin_bottom = 1065.0
 rect_rotation = 0.30243
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Pause/CenterContainer"]
-margin_left = 666.0
-margin_top = 158.0
-margin_right = 1252.0
-margin_bottom = 906.0
+[node name="HBoxContainerPause" type="HBoxContainer" parent="CanvasLayer/Pause/CenterContainer"]
+margin_left = 136.0
+margin_top = 72.0
+margin_right = 1782.0
+margin_bottom = 992.0
+alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer"]
-margin_right = 586.0
-margin_bottom = 178.0
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause"]
+margin_right = 424.0
+margin_bottom = 920.0
 
-[node name="Label" type="Label" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer"]
-margin_left = 81.0
-margin_right = 505.0
-margin_bottom = 178.0
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer"]
+margin_right = 424.0
+margin_bottom = 359.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer"]
+margin_right = 424.0
+margin_bottom = 359.0
 custom_fonts/font = SubResource( 8 )
-text = "Pause"
+text = "Pause
+"
 
-[node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer"]
-margin_top = 182.0
-margin_right = 586.0
-margin_bottom = 345.0
+[node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer"]
+margin_top = 363.0
+margin_right = 424.0
+margin_bottom = 518.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer2"]
-margin_left = 23.0
-margin_right = 563.0
-margin_bottom = 186.0
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer2"]
+margin_left = 37.0
+margin_right = 386.0
+margin_bottom = 155.0
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
-margin_right = 540.0
-margin_bottom = 100.0
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer2/VBoxContainer"]
+margin_right = 349.0
+margin_bottom = 92.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer"]
-margin_left = 104.0
-margin_top = 4.0
-margin_right = 436.0
-margin_bottom = 96.0
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer"]
+margin_left = 8.0
+margin_right = 340.0
+margin_bottom = 92.0
 
-[node name="Label" type="Label" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
 visible = false
 margin_right = 44.0
 margin_bottom = 100.0
@@ -608,45 +623,43 @@ rect_min_size = Vector2( 44, 0 )
 custom_fonts/font = SubResource( 9 )
 text = ">"
 
-[node name="StartPauseButton" type="Button" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
-margin_left = 48.0
-margin_right = 380.0
-margin_bottom = 100.0
+[node name="StartPauseButton" type="Button" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
+margin_right = 332.0
+margin_bottom = 92.0
 rect_min_size = Vector2( 332, 0 )
 custom_fonts/font = SubResource( 13 )
 text = "Play"
 
-[node name="Label" type="Label" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
-margin_top = 104.0
-margin_right = 540.0
-margin_bottom = 163.0
+[node name="Label" type="Label" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer2/VBoxContainer"]
+margin_top = 96.0
+margin_right = 349.0
+margin_bottom = 155.0
 theme = SubResource( 11 )
 custom_fonts/font = SubResource( 12 )
-text = "Click \"Play\" or \"P\" to keep going! 
-
-You can hit \"P\" to pause or unpause at any time."
+text = "You can also hit \"P\" at any time
+"
 align = 1
 
-[node name="CenterContainer4" type="CenterContainer" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer"]
-margin_top = 349.0
-margin_right = 586.0
-margin_bottom = 512.0
+[node name="CenterContainer4" type="CenterContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer"]
+margin_top = 522.0
+margin_right = 424.0
+margin_bottom = 677.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer4"]
-margin_right = 586.0
-margin_bottom = 186.0
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer4"]
+margin_left = 24.0
+margin_right = 399.0
+margin_bottom = 155.0
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer4/VBoxContainer"]
-margin_right = 586.0
-margin_bottom = 100.0
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer4/VBoxContainer"]
+margin_right = 375.0
+margin_bottom = 92.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer4/VBoxContainer/CenterContainer"]
-margin_left = 127.0
-margin_top = 4.0
-margin_right = 459.0
-margin_bottom = 96.0
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer4/VBoxContainer/CenterContainer"]
+margin_left = 21.0
+margin_right = 353.0
+margin_bottom = 92.0
 
-[node name="Label" type="Label" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer4/VBoxContainer/CenterContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer4/VBoxContainer/CenterContainer/HBoxContainer"]
 visible = false
 margin_right = 44.0
 margin_bottom = 100.0
@@ -654,46 +667,43 @@ rect_min_size = Vector2( 44, 0 )
 custom_fonts/font = SubResource( 9 )
 text = ">"
 
-[node name="MenuButton" type="Button" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer4/VBoxContainer/CenterContainer/HBoxContainer"]
-margin_left = 48.0
-margin_right = 380.0
-margin_bottom = 100.0
+[node name="MenuButton" type="Button" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer4/VBoxContainer/CenterContainer/HBoxContainer"]
+margin_right = 332.0
+margin_bottom = 92.0
 rect_min_size = Vector2( 332, 0 )
 custom_fonts/font = SubResource( 10 )
 text = "Menu"
 
-[node name="Label" type="Label" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer4/VBoxContainer"]
-margin_top = 104.0
-margin_right = 586.0
-margin_bottom = 163.0
+[node name="Label" type="Label" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer4/VBoxContainer"]
+margin_top = 96.0
+margin_right = 375.0
+margin_bottom = 155.0
 theme = SubResource( 11 )
 custom_fonts/font = SubResource( 12 )
-text = "Click \"Menu\" or \"Esc\" to go back to the Main Menu! 
-
-You can hit \"Esc\" to escape to the menu at any time."
+text = "You can also hit \"ESC\" at any time
+"
 align = 1
 
-[node name="CenterContainer3" type="CenterContainer" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer"]
-margin_top = 516.0
-margin_right = 586.0
-margin_bottom = 679.0
+[node name="CenterContainer3" type="CenterContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer"]
+margin_top = 681.0
+margin_right = 424.0
+margin_bottom = 836.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer3"]
-margin_left = 88.0
-margin_right = 497.0
-margin_bottom = 186.0
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer3"]
+margin_left = 7.0
+margin_right = 416.0
+margin_bottom = 155.0
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer3/VBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer3/VBoxContainer"]
 margin_right = 409.0
-margin_bottom = 100.0
+margin_bottom = 92.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer3/VBoxContainer/CenterContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer3/VBoxContainer/CenterContainer"]
 margin_left = 38.0
-margin_top = 4.0
 margin_right = 370.0
-margin_bottom = 96.0
+margin_bottom = 92.0
 
-[node name="Label" type="Label" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer3/VBoxContainer/CenterContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer3/VBoxContainer/CenterContainer/HBoxContainer"]
 visible = false
 margin_right = 44.0
 margin_bottom = 100.0
@@ -701,24 +711,81 @@ rect_min_size = Vector2( 44, 0 )
 custom_fonts/font = SubResource( 9 )
 text = ">"
 
-[node name="RestartButton" type="Button" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer3/VBoxContainer/CenterContainer/HBoxContainer"]
-margin_left = 48.0
-margin_right = 380.0
-margin_bottom = 100.0
+[node name="RestartButton" type="Button" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer3/VBoxContainer/CenterContainer/HBoxContainer"]
+margin_right = 332.0
+margin_bottom = 92.0
 rect_min_size = Vector2( 332, 0 )
 custom_fonts/font = SubResource( 10 )
 text = "Restart"
 
-[node name="Label" type="Label" parent="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer3/VBoxContainer"]
-margin_top = 104.0
+[node name="Label" type="Label" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer3/VBoxContainer"]
+margin_top = 96.0
 margin_right = 409.0
-margin_bottom = 163.0
+margin_bottom = 155.0
 theme = SubResource( 11 )
 custom_fonts/font = SubResource( 12 )
-text = "Click \"Restart\" to restart the game! 
-
-You can also restart from the menu."
+text = "You can also restart from the menu.
+"
 align = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause"]
+margin_left = 428.0
+margin_right = 808.0
+margin_bottom = 920.0
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer3"]
+margin_right = 380.0
+margin_bottom = 14.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer3/CenterContainer"]
+margin_right = 380.0
+margin_bottom = 14.0
+text = "                                                                                               "
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause"]
+margin_left = 812.0
+margin_right = 1646.0
+margin_bottom = 920.0
+
+[node name="Title" type="Label" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer2"]
+margin_right = 834.0
+margin_bottom = 178.0
+custom_fonts/font = SubResource( 29 )
+text = "Options"
+align = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer2"]
+margin_top = 182.0
+margin_right = 834.0
+margin_bottom = 920.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer2/CenterContainer"]
+margin_right = 834.0
+margin_bottom = 738.0
+custom_fonts/font = SubResource( 30 )
+text = "WASD movement
+(jump, move left, sit, move right)
+
+Double click W or Space - Double Jump
+
+Enter - attack
+
+1 - unequip
+2 - equip an picked-up item
+
+P - pause
+
+ESC - quit to menu"
+align = 1
+
+[node name="PauseButton" type="Button" parent="CanvasLayer"]
+pause_mode = 2
+margin_left = 1739.0
+margin_top = 972.0
+margin_right = 1889.0
+margin_bottom = 1053.0
+custom_fonts/font = SubResource( 28 )
+text = "Pause"
 
 [node name="Node2D2" parent="." instance=ExtResource( 66 )]
 position = Vector2( 12877, -152 )
@@ -753,6 +820,7 @@ scale = Vector2( 0.9, 0.9 )
 [connection signal="body_entered" from="Player/AttackRange" to="Player" method="_on_Area2D_body_entered"]
 [connection signal="area_entered" from="Player/PickupRange" to="Player" method="_on_PickupRange_area_entered"]
 [connection signal="timeout" from="Player/invincibility_timer" to="Player" method="_on_invincibility_timer_timeout"]
-[connection signal="pressed" from="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer/StartPauseButton" to="CanvasLayer/Pause" method="_on_StartPauseButton_pressed"]
-[connection signal="pressed" from="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer4/VBoxContainer/CenterContainer/HBoxContainer/MenuButton" to="CanvasLayer/Pause" method="_on_MenuButton_pressed"]
-[connection signal="pressed" from="CanvasLayer/Pause/CenterContainer/VBoxContainer/CenterContainer3/VBoxContainer/CenterContainer/HBoxContainer/RestartButton" to="CanvasLayer/Pause" method="_on_RestartButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer/StartPauseButton" to="CanvasLayer/Pause" method="_on_StartPauseButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer4/VBoxContainer/CenterContainer/HBoxContainer/MenuButton" to="CanvasLayer/Pause" method="_on_MenuButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer3/VBoxContainer/CenterContainer/HBoxContainer/RestartButton" to="CanvasLayer/Pause" method="_on_RestartButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseButton" to="CanvasLayer/Pause" method="_on_PauseButton_pressed"]
