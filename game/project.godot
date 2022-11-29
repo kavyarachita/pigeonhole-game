@@ -105,7 +105,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Game"
-run/main_scene="res://Scenes/Opening Cutscene/VideoPlayer.tscn"
+run/main_scene="res://Scenes/Menus/Menu.tscn"
 
 [display]
 
