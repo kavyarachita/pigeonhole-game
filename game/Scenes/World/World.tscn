@@ -375,7 +375,7 @@ size = 166
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=9]
-size = 100
+size = 60
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=13]
@@ -414,7 +414,7 @@ scale = Vector2( 1.3, 1.3 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="knife object"]
 position = Vector2( 4932.31, 2971.54 )
 frames = SubResource( 24 )
-frame = 5
+frame = 1
 playing = true
 
 [node name="Area2D" type="Area2D" parent="knife object" groups=["knife", "pickup", "weapon"]]
@@ -449,7 +449,7 @@ scale = Vector2( 0.9, 0.9 )
 tile_set = SubResource( 17 )
 cell_size = Vector2( 287, 287 )
 format = 1
-tile_data = PoolIntArray( -2031638, 0, 0, -2031637, 0, 0, -2031636, 0, 0, -2031635, 0, 0, -2031634, 0, 0, -2031633, 0, 0, -2031632, 0, 0, -2031631, 0, 0, -2031630, 0, 0, -2031629, 0, 0, -2031628, 0, 0, -2031627, 0, 0, -2031626, 0, 0, -2031625, 0, 0, -2031624, 0, 0, -2031623, 0, 0, -2031622, 0, 0, -2031621, 0, 0, -2031620, 0, 0, -2031619, 0, 0, -2031618, 0, 0, -2031617, 0, 0, -2097152, 0, 0, -2097151, 0, 0, -2097150, 0, 0, -2097149, 0, 0, -2097148, 0, 0, -2097147, 0, 0, -2097146, 0, 0, -2097145, 0, 0, -2097144, 0, 0, -2097143, 0, 0, -2097142, 0, 0, -2097141, 0, 0, -2097140, 0, 0, -2097139, 0, 0, -2097138, 0, 0, -2097137, 0, 0, -2097136, 0, 0, -2097135, 0, 0, -2097134, 0, 0, -2097133, 0, 0, -2097132, 0, 0, -2097131, 0, 0, -2097130, 0, 0, -2097129, 0, 0, -2097128, 0, 0, -2097127, 0, 0, -2097126, 0, 0, -2097125, 0, 0, -2097124, 0, 0, -2097123, 0, 0, -2097122, 0, 0, -2097121, 0, 0, -2097120, 0, 0, -2097119, 0, 0, -2097118, 0, 0, -2097117, 0, 0, -2097116, 0, 0, -2097115, 0, 0, -2097114, 0, 0, -2097113, 0, 0, -2097112, 0, 0, -2097111, 0, 0, -2097110, 0, 0, -2097109, 0, 0, -2097108, 0, 0, -2097107, 0, 0, -2097106, 0, 0, -2097105, 0, 0, -2097104, 0, 0, -2097103, 0, 0, -2097102, 0, 0, -2097101, 0, 0, -2097100, 0, 0, -2097099, 0, 0, -2097098, 0, 0, -2097097, 0, 0, -2097096, 0, 0, -2097095, 0, 0, -2097094, 0, 0, -2097093, 0, 0, -2097092, 0, 0, -2097091, 0, 0, -2097090, 0, 0, -2097089, 0, 0, -2097088, 0, 0, -2097087, 0, 0, -2097086, 0, 0, -2097085, 0, 0, -2097084, 0, 0, -2097083, 0, 0, -2097082, 0, 0, -2097081, 0, 0, -2097080, 0, 0, -2097079, 0, 0, -2097078, 0, 0, -2097077, 0, 0, -2097076, 0, 0, -2097075, 0, 0, -2097074, 0, 0, -2097073, 0, 0, -2097072, 0, 0, -2097071, 0, 0, -2097070, 0, 0, -2097069, 0, 0, -2097068, 0, 0, -2097067, 0, 0, -2097066, 0, 0, -2097065, 0, 0, -2097064, 0, 0, -2097063, 0, 0, -2097062, 0, 0, -2097061, 0, 0, -2097060, 0, 0, -2097059, 0, 0, -2097058, 0, 0, -2097057, 0, 0, -2097056, 0, 0, -2097055, 0, 0, -2097054, 0, 0, -2097053, 0, 0, -2097052, 0, 0, -2097051, 0, 0, -2097050, 0, 0, -2097049, 0, 0, -2097048, 0, 0, -2097047, 0, 0, -2097046, 0, 0, -2097045, 0, 0, -2097044, 0, 0, -2097043, 0, 0, -2097042, 0, 0, -2097041, 0, 0, -2097040, 0, 0, -2097039, 0, 0, -2097038, 0, 0, -2097037, 0, 0, -2097036, 0, 0, -2097035, 0, 0, -2097034, 0, 0, -2097033, 0, 0, -2097032, 0, 0, -2097031, 0, 0, -2097030, 0, 0, -2097029, 0, 0, -2097028, 0, 0, -2097027, 0, 0, -2097026, 0, 0, -2097025, 0, 0, -2097024, 0, 0, -2097023, 0, 0, -2097022, 0, 0, -2097021, 0, 0, -2097020, 0, 0, -2097019, 0, 0, -2097018, 0, 0, -2097017, 0, 0, -2097016, 0, 0, -2097015, 0, 0, -2097014, 0, 0, -2097013, 0, 0, -2097012, 0, 0, -2097011, 0, 0, -2097010, 0, 0, -2097009, 0, 0, -2097008, 0, 0, -2097007, 0, 0, -2097006, 0, 0, -2097005, 0, 0, -2097004, 0, 0, -2097003, 0, 0, -2097002, 0, 0, -2097001, 0, 0, -2097000, 0, 0, -2096999, 0, 0, -2096998, 0, 0, -2096997, 0, 0, -2096996, 0, 0, -2096995, 0, 0, -2096994, 0, 0, -2096993, 0, 0, -2096992, 0, 0, -2096991, 0, 0, -2096990, 0, 0, -2096989, 0, 0, -2096988, 0, 0, -2096987, 0, 0, -2096986, 0, 0, -2096985, 0, 0, -2096984, 0, 0, -2096983, 0, 0, -2096982, 0, 0, -2096981, 0, 0, -2096980, 0, 0, -2096979, 0, 0, -2096978, 0, 0, -2096977, 0, 0, -2096976, 0, 0, -2096975, 0, 0, -2096974, 0, 0, -2096973, 0, 0, -2096972, 0, 0, -2096971, 0, 0, -2096970, 0, 0, -2096969, 0, 0, -2096968, 0, 0, -2096967, 0, 0, -2096966, 0, 0, -2096965, 0, 0, -2096964, 0, 0, -1966102, 0, 0, -2031428, 0, 0, -1900566, 0, 0, -1965892, 0, 0, -1835030, 0, 0, -1900356, 0, 0, -1769494, 0, 0, -1834820, 0, 0, -1703958, 0, 0, -1769284, 0, 0, -1638422, 0, 0, -1703748, 0, 0, -1572886, 0, 0, -1638212, 0, 0, -1507350, 0, 0, -1572676, 0, 0, -1441814, 0, 0, -1507140, 0, 0, -1376278, 0, 0, -1441604, 0, 0, -1310742, 0, 0, -1376068, 0, 0, -1245206, 0, 0, -1310532, 0, 0, -1179670, 0, 0, -1244996, 0, 0, -1114134, 0, 0, -1179460, 0, 0, -1048598, 0, 0, -1113924, 0, 0, -983062, 0, 0, -1048388, 0, 0, -917526, 0, 0, -982852, 0, 0, -851990, 0, 0, -917316, 0, 0, -786454, 0, 0, -851780, 0, 0, -720918, 0, 0, -786244, 0, 0, -655382, 0, 0, -720708, 0, 0, -589846, 0, 0, -655172, 0, 0, -524310, 0, 0, -589636, 0, 0, -458774, 0, 0, -524103, 1, 0, -524102, 1, 0, -524101, 1, 0, -524100, 0, 0, -393238, 0, 0, -458567, 1, 0, -458566, 1, 0, -458565, 1, 0, -458564, 0, 0, -327702, 0, 0, -393031, 1, 0, -393030, 1, 0, -393029, 1, 0, -393028, 0, 0, -262166, 0, 0, -327495, 1, 0, -327494, 1, 0, -327493, 1, 0, -327492, 0, 0, -196630, 0, 0, -196612, 1, 0, -196611, 1, 0, -261959, 1, 0, -261958, 1, 0, -261957, 1, 0, -261956, 0, 0, -131094, 0, 0, -131090, 1, 0, -131089, 1, 0, -131088, 1, 0, -131077, 1, 0, -131076, 1, 0, -131075, 1, 0, -196589, 1, 0, -196469, 0, 0, -196423, 1, 0, -196422, 1, 0, -196421, 1, 0, -196420, 0, 0, -65558, 0, 0, -65554, 1, 0, -65553, 1, 0, -65552, 1, 0, -65541, 1, 0, -65540, 1, 0, -65539, 1, 0, -65538, 4, 0, -131054, 1, 0, -131053, 0, 0, -131041, 1, 0, -131035, 2, 0, -131034, 0, 0, -131033, 0, 0, -131032, 0, 0, -131011, 1, 0, -131010, 1, 0, -130958, 1, 0, -130935, 1, 0, -130934, 1, 0, -130933, 0, 0, -130887, 1, 0, -130886, 1, 0, -130885, 1, 0, -130884, 0, 0, -22, 0, 0, -18, 1, 0, -17, 1, 0, -16, 1, 0, -13, 1, 0, -12, 1, 0, -11, 1, 0, -6, 1, 0, -5, 1, 0, -4, 1, 0, -3, 1, 0, -2, 5, 0, -65523, 1, 0, -65522, 1, 0, -65519, 1, 0, -65518, 0, 0, -65517, 0, 0, -65506, 1, 0, -65505, 1, 0, -65504, 1, 0, -65503, 1, 0, -65499, 1, 0, -65498, 0, 0, -65497, 0, 0, -65496, 0, 0, -65493, 1, 0, -65476, 1, 0, -65475, 1, 0, -65474, 1, 0, -65427, 1, 0, -65422, 1, 0, -65421, 1, 0, -65420, 1, 0, -65400, 1, 0, -65399, 1, 0, -65398, 1, 0, -65397, 0, 0, -65385, 1, 0, -65351, 1, 0, -65350, 1, 0, -65349, 1, 0, -65348, 0, 0, 133, 0, 0 )
+tile_data = PoolIntArray( -2031638, 0, 0, -2031637, 0, 0, -2031636, 0, 0, -2031635, 0, 0, -2031634, 0, 0, -2031633, 0, 0, -2031632, 0, 0, -2031631, 0, 0, -2031630, 0, 0, -2031629, 0, 0, -2031628, 0, 0, -2031627, 0, 0, -2031626, 0, 0, -2031625, 0, 0, -2031624, 0, 0, -2031623, 0, 0, -2031622, 0, 0, -2031621, 0, 0, -2031620, 0, 0, -2031619, 0, 0, -2031618, 0, 0, -2031617, 0, 0, -2097152, 0, 0, -2097151, 0, 0, -2097150, 0, 0, -2097149, 0, 0, -2097148, 0, 0, -2097147, 0, 0, -2097146, 0, 0, -2097145, 0, 0, -2097144, 0, 0, -2097143, 0, 0, -2097142, 0, 0, -2097141, 0, 0, -2097140, 0, 0, -2097139, 0, 0, -2097138, 0, 0, -2097137, 0, 0, -2097136, 0, 0, -2097135, 0, 0, -2097134, 0, 0, -2097133, 0, 0, -2097132, 0, 0, -2097131, 0, 0, -2097130, 0, 0, -2097129, 0, 0, -2097128, 0, 0, -2097127, 0, 0, -2097126, 0, 0, -2097125, 0, 0, -2097124, 0, 0, -2097123, 0, 0, -2097122, 0, 0, -2097121, 0, 0, -2097120, 0, 0, -2097119, 0, 0, -2097118, 0, 0, -2097117, 0, 0, -2097116, 0, 0, -2097115, 0, 0, -2097114, 0, 0, -2097113, 0, 0, -2097112, 0, 0, -2097111, 0, 0, -2097110, 0, 0, -2097109, 0, 0, -2097108, 0, 0, -2097107, 0, 0, -2097106, 0, 0, -2097105, 0, 0, -2097104, 0, 0, -2097103, 0, 0, -2097102, 0, 0, -2097101, 0, 0, -2097100, 0, 0, -2097099, 0, 0, -2097098, 0, 0, -2097097, 0, 0, -2097096, 0, 0, -2097095, 0, 0, -2097094, 0, 0, -2097093, 0, 0, -2097092, 0, 0, -2097091, 0, 0, -2097090, 0, 0, -2097089, 0, 0, -2097088, 0, 0, -2097087, 0, 0, -2097086, 0, 0, -2097085, 0, 0, -2097084, 0, 0, -2097083, 0, 0, -2097082, 0, 0, -2097081, 0, 0, -2097080, 0, 0, -2097079, 0, 0, -2097078, 0, 0, -2097077, 0, 0, -2097076, 0, 0, -2097075, 0, 0, -2097074, 0, 0, -2097073, 0, 0, -2097072, 0, 0, -2097071, 0, 0, -2097070, 0, 0, -2097069, 0, 0, -2097068, 0, 0, -2097067, 0, 0, -2097066, 0, 0, -2097065, 0, 0, -2097064, 0, 0, -2097063, 0, 0, -2097062, 0, 0, -2097061, 0, 0, -2097060, 0, 0, -2097059, 0, 0, -2097058, 0, 0, -2097057, 0, 0, -2097056, 0, 0, -2097055, 0, 0, -2097054, 0, 0, -2097053, 0, 0, -2097052, 0, 0, -2097051, 0, 0, -2097050, 0, 0, -2097049, 0, 0, -2097048, 0, 0, -2097047, 0, 0, -2097046, 0, 0, -2097045, 0, 0, -2097044, 0, 0, -2097043, 0, 0, -2097042, 0, 0, -2097041, 0, 0, -2097040, 0, 0, -2097039, 0, 0, -2097038, 0, 0, -2097037, 0, 0, -2097036, 0, 0, -2097035, 0, 0, -2097034, 0, 0, -2097033, 0, 0, -2097032, 0, 0, -2097031, 0, 0, -2097030, 0, 0, -2097029, 0, 0, -2097028, 0, 0, -2097027, 0, 0, -2097026, 0, 0, -2097025, 0, 0, -2097024, 0, 0, -2097023, 0, 0, -2097022, 0, 0, -2097021, 0, 0, -2097020, 0, 0, -2097019, 0, 0, -2097018, 0, 0, -2097017, 0, 0, -2097016, 0, 0, -2097015, 0, 0, -2097014, 0, 0, -2097013, 0, 0, -2097012, 0, 0, -2097011, 0, 0, -2097010, 0, 0, -2097009, 0, 0, -2097008, 0, 0, -2097007, 0, 0, -2097006, 0, 0, -2097005, 0, 0, -2097004, 0, 0, -2097003, 0, 0, -2097002, 0, 0, -2097001, 0, 0, -2097000, 0, 0, -2096999, 0, 0, -2096998, 0, 0, -2096997, 0, 0, -2096996, 0, 0, -2096995, 0, 0, -2096994, 0, 0, -2096993, 0, 0, -2096992, 0, 0, -2096991, 0, 0, -2096990, 0, 0, -2096989, 0, 0, -2096988, 0, 0, -2096987, 0, 0, -2096986, 0, 0, -2096985, 0, 0, -2096984, 0, 0, -2096983, 0, 0, -2096982, 0, 0, -2096981, 0, 0, -2096980, 0, 0, -2096979, 0, 0, -2096978, 0, 0, -2096977, 0, 0, -2096976, 0, 0, -2096975, 0, 0, -2096974, 0, 0, -2096973, 0, 0, -2096972, 0, 0, -2096971, 0, 0, -2096970, 0, 0, -2096969, 0, 0, -2096968, 0, 0, -2096967, 0, 0, -2096966, 0, 0, -2096965, 0, 0, -2096964, 0, 0, -1966102, 0, 0, -2031428, 0, 0, -1900566, 0, 0, -1965892, 0, 0, -1835030, 0, 0, -1900356, 0, 0, -1769494, 0, 0, -1834820, 0, 0, -1703958, 0, 0, -1769284, 0, 0, -1638422, 0, 0, -1703748, 0, 0, -1572886, 0, 0, -1638212, 0, 0, -1507350, 0, 0, -1572676, 0, 0, -1441814, 0, 0, -1507140, 0, 0, -1376278, 0, 0, -1441604, 0, 0, -1310742, 0, 0, -1376068, 0, 0, -1245206, 0, 0, -1310532, 0, 0, -1179670, 0, 0, -1244996, 0, 0, -1114134, 0, 0, -1179460, 0, 0, -1048598, 0, 0, -1113924, 0, 0, -983062, 0, 0, -1048388, 0, 0, -917526, 0, 0, -982852, 0, 0, -851990, 0, 0, -917316, 0, 0, -786454, 0, 0, -851780, 0, 0, -720918, 0, 0, -786244, 0, 0, -655382, 0, 0, -720708, 0, 0, -589846, 0, 0, -655172, 0, 0, -524310, 0, 0, -589636, 0, 0, -458774, 0, 0, -524103, 1, 0, -524102, 1, 0, -524101, 1, 0, -524100, 0, 0, -393238, 0, 0, -458567, 1, 0, -458566, 1, 0, -458565, 1, 0, -458564, 0, 0, -327702, 0, 0, -393031, 1, 0, -393030, 1, 0, -393029, 1, 0, -393028, 0, 0, -262166, 0, 0, -327495, 1, 0, -327494, 1, 0, -327493, 1, 0, -327492, 0, 0, -196630, 0, 0, -196612, 1, 0, -196611, 1, 0, -261959, 1, 0, -261958, 1, 0, -261957, 1, 0, -261956, 0, 0, -131094, 0, 0, -131090, 1, 0, -131089, 1, 0, -131088, 1, 0, -131077, 1, 0, -131076, 1, 0, -131075, 1, 0, -196589, 1, 0, -196469, 0, 0, -196423, 1, 0, -196422, 1, 0, -196421, 1, 0, -196420, 0, 0, -65558, 0, 0, -65554, 1, 0, -65553, 1, 0, -65552, 1, 0, -65541, 1, 0, -65540, 1, 0, -65539, 1, 0, -65538, 4, 0, -131054, 1, 0, -131053, 0, 0, -131041, 1, 0, -131035, 2, 0, -131034, 0, 0, -131033, 0, 0, -131032, 0, 0, -131011, 1, 0, -131010, 1, 0, -130958, 1, 0, -130935, 1, 0, -130934, 1, 0, -130933, 0, 0, -130932, 1, 0, -130887, 1, 0, -130886, 1, 0, -130885, 1, 0, -130884, 0, 0, -22, 0, 0, -18, 1, 0, -17, 1, 0, -16, 1, 0, -13, 1, 0, -12, 1, 0, -11, 1, 0, -6, 1, 0, -5, 1, 0, -4, 1, 0, -3, 1, 0, -2, 5, 0, -65523, 1, 0, -65522, 1, 0, -65519, 1, 0, -65518, 0, 0, -65517, 0, 0, -65506, 1, 0, -65505, 1, 0, -65504, 1, 0, -65503, 1, 0, -65499, 1, 0, -65498, 0, 0, -65497, 0, 0, -65496, 0, 0, -65493, 1, 0, -65476, 1, 0, -65475, 1, 0, -65474, 1, 0, -65473, 1, 0, -65427, 1, 0, -65422, 1, 0, -65421, 1, 0, -65420, 1, 0, -65400, 1, 0, -65399, 1, 0, -65398, 1, 0, -65397, 0, 0, -65396, 1, 0, -65395, 1, 0, -65385, 1, 0, -65351, 1, 0, -65350, 1, 0, -65349, 1, 0, -65348, 0, 0, 133, 0, 0 )
 
 [node name="Player" type="KinematicBody2D" parent="." groups=["player"]]
 position = Vector2( 304, -136 )
@@ -576,22 +576,23 @@ margin_bottom = 1065.0
 rect_rotation = 0.30243
 
 [node name="HBoxContainerPause" type="HBoxContainer" parent="CanvasLayer/Pause/CenterContainer"]
-margin_left = 136.0
+margin_left = 132.0
 margin_top = 72.0
-margin_right = 1782.0
+margin_right = 1787.0
 margin_bottom = 992.0
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause"]
-margin_right = 424.0
+margin_right = 433.0
 margin_bottom = 920.0
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer"]
-margin_right = 424.0
+margin_right = 433.0
 margin_bottom = 359.0
 
 [node name="Label" type="Label" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer"]
-margin_right = 424.0
+margin_left = 4.0
+margin_right = 428.0
 margin_bottom = 359.0
 custom_fonts/font = SubResource( 8 )
 text = "Pause
@@ -599,33 +600,33 @@ text = "Pause
 
 [node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer"]
 margin_top = 363.0
-margin_right = 424.0
+margin_right = 433.0
 margin_bottom = 518.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer2"]
-margin_left = 37.0
-margin_right = 386.0
+margin_left = 5.0
+margin_right = 428.0
 margin_bottom = 155.0
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer2/VBoxContainer"]
-margin_right = 349.0
+margin_right = 423.0
 margin_bottom = 92.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer"]
-margin_left = 8.0
-margin_right = 340.0
+margin_right = 423.0
 margin_bottom = 92.0
 
 [node name="Label" type="Label" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
-visible = false
-margin_right = 44.0
-margin_bottom = 100.0
+margin_top = 13.0
+margin_right = 87.0
+margin_bottom = 78.0
 rect_min_size = Vector2( 44, 0 )
 custom_fonts/font = SubResource( 9 )
-text = ">"
+text = "P   "
 
 [node name="StartPauseButton" type="Button" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
-margin_right = 332.0
+margin_left = 91.0
+margin_right = 423.0
 margin_bottom = 92.0
 rect_min_size = Vector2( 332, 0 )
 custom_fonts/font = SubResource( 13 )
@@ -633,43 +634,42 @@ text = "Play"
 
 [node name="Label" type="Label" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer2/VBoxContainer"]
 margin_top = 96.0
-margin_right = 349.0
+margin_right = 423.0
 margin_bottom = 155.0
 theme = SubResource( 11 )
 custom_fonts/font = SubResource( 12 )
-text = "You can also hit \"P\" at any time
+text = "You can hit \"P\" at any time
 "
 align = 1
 
 [node name="CenterContainer4" type="CenterContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer"]
 margin_top = 522.0
-margin_right = 424.0
+margin_right = 433.0
 margin_bottom = 677.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer4"]
-margin_left = 24.0
-margin_right = 399.0
+margin_right = 433.0
 margin_bottom = 155.0
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer4/VBoxContainer"]
-margin_right = 375.0
+margin_right = 433.0
 margin_bottom = 92.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer4/VBoxContainer/CenterContainer"]
-margin_left = 21.0
-margin_right = 353.0
+margin_right = 433.0
 margin_bottom = 92.0
 
 [node name="Label" type="Label" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer4/VBoxContainer/CenterContainer/HBoxContainer"]
-visible = false
-margin_right = 44.0
-margin_bottom = 100.0
+margin_top = 13.0
+margin_right = 97.0
+margin_bottom = 78.0
 rect_min_size = Vector2( 44, 0 )
 custom_fonts/font = SubResource( 9 )
-text = ">"
+text = "ESC"
 
 [node name="MenuButton" type="Button" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer4/VBoxContainer/CenterContainer/HBoxContainer"]
-margin_right = 332.0
+margin_left = 101.0
+margin_right = 433.0
 margin_bottom = 92.0
 rect_min_size = Vector2( 332, 0 )
 custom_fonts/font = SubResource( 10 )
@@ -677,43 +677,43 @@ text = "Menu"
 
 [node name="Label" type="Label" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer4/VBoxContainer"]
 margin_top = 96.0
-margin_right = 375.0
+margin_right = 433.0
 margin_bottom = 155.0
 theme = SubResource( 11 )
 custom_fonts/font = SubResource( 12 )
-text = "You can also hit \"ESC\" at any time
+text = "You can hit \"ESC\" at any time
 "
 align = 1
 
 [node name="CenterContainer3" type="CenterContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer"]
 margin_top = 681.0
-margin_right = 424.0
+margin_right = 433.0
 margin_bottom = 836.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer3"]
-margin_left = 7.0
-margin_right = 416.0
+margin_left = 4.0
+margin_right = 429.0
 margin_bottom = 155.0
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer3/VBoxContainer"]
-margin_right = 409.0
+margin_right = 425.0
 margin_bottom = 92.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer3/VBoxContainer/CenterContainer"]
-margin_left = 38.0
-margin_right = 370.0
+margin_right = 425.0
 margin_bottom = 92.0
 
 [node name="Label" type="Label" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer3/VBoxContainer/CenterContainer/HBoxContainer"]
-visible = false
-margin_right = 44.0
-margin_bottom = 100.0
+margin_top = 13.0
+margin_right = 89.0
+margin_bottom = 78.0
 rect_min_size = Vector2( 44, 0 )
 custom_fonts/font = SubResource( 9 )
-text = ">"
+text = "R   "
 
 [node name="RestartButton" type="Button" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer3/VBoxContainer/CenterContainer/HBoxContainer"]
-margin_right = 332.0
+margin_left = 93.0
+margin_right = 425.0
 margin_bottom = 92.0
 rect_min_size = Vector2( 332, 0 )
 custom_fonts/font = SubResource( 10 )
@@ -721,17 +721,17 @@ text = "Restart"
 
 [node name="Label" type="Label" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer/CenterContainer3/VBoxContainer"]
 margin_top = 96.0
-margin_right = 409.0
+margin_right = 425.0
 margin_bottom = 155.0
 theme = SubResource( 11 )
 custom_fonts/font = SubResource( 12 )
-text = "You can also restart from the menu.
+text = "You can hit \"R\" at any time.
 "
 align = 1
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause"]
-margin_left = 428.0
-margin_right = 808.0
+margin_left = 437.0
+margin_right = 817.0
 margin_bottom = 920.0
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer3"]
@@ -744,8 +744,8 @@ margin_bottom = 14.0
 text = "                                                                                               "
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause"]
-margin_left = 812.0
-margin_right = 1646.0
+margin_left = 821.0
+margin_right = 1655.0
 margin_bottom = 920.0
 
 [node name="Title" type="Label" parent="CanvasLayer/Pause/CenterContainer/HBoxContainerPause/VBoxContainer2"]
@@ -781,10 +781,11 @@ align = 1
 
 [node name="PauseButton" type="Button" parent="CanvasLayer"]
 pause_mode = 2
-margin_left = 1739.0
-margin_top = 972.0
-margin_right = 1889.0
-margin_bottom = 1053.0
+margin_left = 1750.0
+margin_top = 944.0
+margin_right = 1900.0
+margin_bottom = 1052.0
+rect_min_size = Vector2( 150, 0 )
 custom_fonts/font = SubResource( 28 )
 text = "Pause"
 
