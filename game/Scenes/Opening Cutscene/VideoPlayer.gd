@@ -6,6 +6,12 @@ func _ready():
 	_wait()
 #	get_tree().change_scene("res://Menu.tscn")
 
+func _process(delta):
+	if Input.is_action_just_pressed("esc"):
+		get_tree().change_scene("res://Scenes/Menus/Menu.tscn")
+	if Input.is_action_just_pressed("ui_accept"):
+		get_tree().change_scene("res://Scenes/Menus/ReadyToPlay.tscn")
+
 func _wait():
 #	play()
 	var t = Timer.new()
@@ -14,10 +20,10 @@ func _wait():
 	self.add_child(t)
 	t.start()
 	yield(t, "timeout")
-	get_tree().change_scene("res://Scenes/World/World.tscn")
+	get_tree().change_scene("res://Scenes/Menus/ReadyToPlay.tscn")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 
 func _on_SkipIntroCutSceneButton_pressed():
-	get_tree().change_scene("res://Scenes/World/World.tscn")
+	get_tree().change_scene("res://Scenes/Menus/ReadyToPlay.tscn")

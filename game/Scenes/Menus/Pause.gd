@@ -16,6 +16,9 @@ func _physics_process(delta):
 		"""
 		get_tree().paused = false
 		get_tree().change_scene("res://Scenes/Menus/Menu.tscn")
+	if Input.is_action_just_pressed("restart"):
+		get_tree().paused = false
+		get_tree().change_scene("res://Scenes/World/World.tscn")
 
 func _on_StartPauseButton_pressed(): #pressing the Start button will start the game
 	get_tree().paused = false
