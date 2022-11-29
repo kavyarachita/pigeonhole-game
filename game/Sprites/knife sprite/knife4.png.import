@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/knife4.png-751fa390197b08cc6cfde42a75ecfc08.stex"
+path="res://.import/knife4.png-d44c201b4532e14110c626823bc892c7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Knife sprite/knife4.png"
-dest_files=[ "res://.import/knife4.png-751fa390197b08cc6cfde42a75ecfc08.stex" ]
+source_file="res://Sprites/knife sprite/knife4.png"
+dest_files=[ "res://.import/knife4.png-d44c201b4532e14110c626823bc892c7.stex" ]
 
 [params]
 

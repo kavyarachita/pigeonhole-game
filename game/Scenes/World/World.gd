@@ -5,3 +5,4 @@ var score
 
 func _ready():
 	pass
+
