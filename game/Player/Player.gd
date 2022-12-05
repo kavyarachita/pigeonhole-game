@@ -31,6 +31,7 @@ func _physics_process(delta):
 		get_tree().change_scene("res://Scenes/Menus/Menu.tscn")
 	if is_dead:
 		handle_death()
+		get_tree().change_scene("res://Scenes/Dead Cutscene/DeadVideoPlayer.tscn")
 	elif is_stunned:
 		play_hurt()
 	elif not game_over: 
