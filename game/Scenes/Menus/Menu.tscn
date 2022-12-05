@@ -2,10 +2,7 @@
 
 [ext_resource path="res://Scenes/Menus/Menu.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Menus/Milky Coffee.ttf" type="DynamicFontData" id=2]
-
-[sub_resource type="DynamicFont" id=2]
-size = 130
-font_data = ExtResource( 2 )
+[ext_resource path="res://Sprites/Title Sprite/titleLogo_light.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFont" id=3]
 size = 100
@@ -40,33 +37,23 @@ margin_bottom = 1076.0
 color = Color( 0.658824, 0.607843, 0.886275, 1 )
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-margin_right = 1919.0
-margin_bottom = 1079.0
+margin_left = 2.0
+margin_top = 257.0
+margin_right = 1921.0
+margin_bottom = 1336.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 404.0
-margin_top = 301.0
-margin_right = 1515.0
-margin_bottom = 777.0
-
-[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
-margin_right = 1111.0
-margin_bottom = 140.0
-
-[node name="Title" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer"]
-margin_right = 1111.0
-margin_bottom = 140.0
-custom_fonts/font = SubResource( 2 )
-text = "Pigeonhole Principle"
+margin_left = 769.0
+margin_top = 373.0
+margin_right = 1149.0
+margin_bottom = 705.0
 
 [node name="CenterContainer2" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
-margin_top = 144.0
-margin_right = 1111.0
-margin_bottom = 476.0
+margin_right = 380.0
+margin_bottom = 332.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2"]
-margin_left = 365.0
-margin_right = 745.0
+margin_right = 380.0
 margin_bottom = 332.0
 
 [node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
@@ -139,6 +126,11 @@ margin_bottom = 108.0
 rect_min_size = Vector2( 332, 0 )
 custom_fonts/font = SubResource( 6 )
 text = "Quit"
+
+[node name="TitleLogoLight" type="Sprite" parent="."]
+position = Vector2( 988, 359 )
+scale = Vector2( 0.945561, 0.92446 )
+texture = ExtResource( 3 )
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer/StartMenuButton" to="." method="_on_StartMenuButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/HBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
