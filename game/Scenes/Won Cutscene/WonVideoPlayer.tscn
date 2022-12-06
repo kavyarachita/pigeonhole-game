@@ -28,5 +28,6 @@ custom_fonts/font = SubResource( 1 )
 text = "Menu"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+autoplay = true
 
 [connection signal="pressed" from="HBoxContainer/SkipToMenu" to="." method="_on_SkipToMenu_pressed"]
