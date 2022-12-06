@@ -10,9 +10,11 @@ var _is_facing_left = true
 
 var velocity = Vector2()
 var _is_dying = false
-var _is_stunned = false
+var _is_stunned = false 
 var mob_damage = 2
 var just_attacked = false
+var idle = false
+var pace = true
 
 onready var _animated_sprite: AnimatedSprite = $AnimatedSprite
 onready var _collision_shape: CollisionShape2D = $CollisionShape2D
