@@ -1247,7 +1247,7 @@ position = Vector2( 80439, 3286 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="duck"]
 frames = SubResource( 42 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="Area2D" type="Area2D" parent="duck" groups=["ducky", "item", "pickup"]]
@@ -1263,7 +1263,7 @@ z_index = 1
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="knife object"]
 frames = SubResource( 24 )
-frame = 5
+frame = 1
 playing = true
 
 [node name="Area2D" type="Area2D" parent="knife object" groups=["knife", "pickup", "weapon"]]
@@ -1557,7 +1557,6 @@ custom_fonts/font = SubResource( 135 )
 text = "HEALTH: 100"
 align = 1
 valign = 1
-percent_visible = -0.1
 
 [node name="Pause" type="Control" parent="CanvasLayer"]
 pause_mode = 2
