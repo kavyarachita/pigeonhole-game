@@ -158,7 +158,7 @@ func hurt(damage):
 	health -= damage
 	health = clamp(health, 0, 100)
 	print("player hurt - current health ", health)
-	get_parent().get_node("CanvasLayer/Label").text = str(health)
+	get_parent().get_node("CanvasLayer/Label").text = ("HEALTH: " + str(health))
 	is_stunned = true
 	$stun_timer.start()
 	if health <= 0:
