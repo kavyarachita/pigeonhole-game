@@ -25,5 +25,5 @@ func _wait():
 #func _process(delta):
 #	pass
 
-func _on_SkipToMenuButton_pressed():
+func _on_SkipToMenu_pressed():
 	get_tree().change_scene("res://Scenes/Menus/Menu.tscn")

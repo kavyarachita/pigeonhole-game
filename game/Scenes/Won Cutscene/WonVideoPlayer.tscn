@@ -29,4 +29,4 @@ text = "Menu"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
-[connection signal="pressed" from="HBoxContainer/SkipToMenu" to="." method="_on_SkipIntroCutSceneButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/SkipToMenu" to="." method="_on_SkipToMenu_pressed"]

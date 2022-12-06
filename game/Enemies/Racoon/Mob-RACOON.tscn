@@ -1,7 +1,7 @@
 [gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Enemies/Rat/turn towards player.gd" type="Script" id=1]
-[ext_resource path="res://Enemies/Rat/turn around.gd" type="Script" id=2]
+[ext_resource path="res://Enemies/Rat/idle.gd" type="Script" id=2]
 [ext_resource path="res://Enemies/Rat/is dead.gd" type="Script" id=3]
 [ext_resource path="res://Enemies/Rat/move forward.gd" type="Script" id=4]
 [ext_resource path="res://Enemies/Rat/death animation.gd" type="Script" id=5]
@@ -63,10 +63,10 @@ animations = [ {
 extents = Vector2( 104.5, 111.625 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 170, 70 )
+extents = Vector2( 170, 111 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 450, 50 )
+extents = Vector2( 600, 116 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -76,8 +76,7 @@ script = ExtResource( 30 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Racoon"]
 frames = SubResource( 1 )
-animation = "Walk"
-frame = 2
+animation = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Racoon"]
 position = Vector2( 6, 5 )
@@ -140,7 +139,7 @@ script = ExtResource( 15 )
 [node name="move forward" type="Node" parent="Racoon/BehaviorTreeRoot/SelectorComposite/PatrolArea"]
 script = ExtResource( 4 )
 
-[node name="turn around" type="Node" parent="Racoon/BehaviorTreeRoot/SelectorComposite/PatrolArea"]
+[node name="idle" type="Node" parent="Racoon/BehaviorTreeRoot/SelectorComposite/PatrolArea"]
 script = ExtResource( 2 )
 
 [node name="PlayerCloseDetectionArea" type="Area2D" parent="Racoon"]
@@ -148,7 +147,7 @@ collision_layer = 2
 script = ExtResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Racoon/PlayerCloseDetectionArea"]
-position = Vector2( 0, 40 )
+position = Vector2( 0, -1 )
 shape = SubResource( 2 )
 
 [node name="PlayerNearDetectionArea" type="Area2D" parent="Racoon"]
@@ -156,8 +155,14 @@ collision_layer = 2
 script = ExtResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Racoon/PlayerNearDetectionArea"]
-position = Vector2( 0, 40 )
 shape = SubResource( 3 )
+
+[node name="idle_timer" type="Timer" parent="Racoon"]
+wait_time = 2.0
+
+[node name="pace_timer" type="Timer" parent="Racoon"]
+wait_time = 3.0
+autostart = true
 
 [node name="attack_timer" type="Timer" parent="Racoon"]
 wait_time = 2.0
@@ -166,4 +171,7 @@ wait_time = 2.0
 [connection signal="body_entered" from="Racoon/PlayerCloseDetectionArea" to="Racoon" method="_on_PlayerCloseDetectionArea_body_entered"]
 [connection signal="body_exited" from="Racoon/PlayerCloseDetectionArea" to="Racoon" method="_on_PlayerCloseDetectionArea_body_exited"]
 [connection signal="body_entered" from="Racoon/PlayerNearDetectionArea" to="Racoon" method="_on_PlayerNearDetectionArea_body_entered"]
+[connection signal="body_exited" from="Racoon/PlayerNearDetectionArea" to="Racoon" method="_on_PlayerNearDetectionArea_body_exited"]
+[connection signal="timeout" from="Racoon/idle_timer" to="Racoon" method="_on_idle_timer_timeout"]
+[connection signal="timeout" from="Racoon/pace_timer" to="Racoon" method="_on_pace_timer_timeout"]
 [connection signal="timeout" from="Racoon/attack_timer" to="Racoon" method="_on_attack_timer_timeout"]
