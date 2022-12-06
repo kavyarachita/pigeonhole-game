@@ -19,10 +19,10 @@
 [ext_resource path="res://Enemies/Rat/death animation.gd" type="Script" id=17]
 [ext_resource path="res://Enemies/Rat/is stunned.gd" type="Script" id=18]
 [ext_resource path="res://Enemies/Rat/stun animation.gd" type="Script" id=19]
-[ext_resource path="res://Enemies/Rat/turn around.gd" type="Script" id=20]
 [ext_resource path="res://Enemies/Rat/is player close.gd" type="Script" id=21]
 [ext_resource path="res://Enemies/Rat/attack player.gd" type="Script" id=22]
 [ext_resource path="res://Enemies/Rat/is player attackable.gd" type="Script" id=23]
+[ext_resource path="res://Enemies/Rat/idle.gd" type="Script" id=24]
 [ext_resource path="res://Sprites/Rat Sprite/attack.png" type="Texture" id=26]
 
 [sub_resource type="SpriteFrames" id=1]
@@ -58,10 +58,10 @@ radius = 57.9999
 height = 110.0
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 140, 50 )
+extents = Vector2( 140, 54 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 450, 50 )
+extents = Vector2( 450, 58.5 )
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( 1, 0 )
@@ -137,15 +137,15 @@ script = ExtResource( 9 )
 [node name="move forward" type="Node" parent="Rat/BehaviorTreeRoot/SelectorComposite/PatrolArea"]
 script = ExtResource( 14 )
 
-[node name="turn around" type="Node" parent="Rat/BehaviorTreeRoot/SelectorComposite/PatrolArea"]
-script = ExtResource( 20 )
+[node name="idle" type="Node" parent="Rat/BehaviorTreeRoot/SelectorComposite/PatrolArea"]
+script = ExtResource( 24 )
 
 [node name="PlayerCloseDetectionArea" type="Area2D" parent="Rat"]
 collision_layer = 2
 script = ExtResource( 12 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rat/PlayerCloseDetectionArea"]
-position = Vector2( 0, 40 )
+position = Vector2( 0, 36 )
 shape = SubResource( 3 )
 
 [node name="PlayerNearDetectionArea" type="Area2D" parent="Rat"]
@@ -153,11 +153,18 @@ collision_layer = 2
 script = ExtResource( 12 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rat/PlayerNearDetectionArea"]
-position = Vector2( 0, 40 )
+position = Vector2( 0, 34.5 )
 shape = SubResource( 4 )
 
 [node name="attack_timer" type="Timer" parent="Rat"]
 wait_time = 2.0
+
+[node name="idle_timer" type="Timer" parent="Rat"]
+wait_time = 2.0
+
+[node name="pace_timer" type="Timer" parent="Rat"]
+wait_time = 3.0
+autostart = true
 
 [connection signal="animation_finished" from="Rat/AnimatedSprite" to="Rat" method="_on_AnimatedSprite_animation_finished"]
 [connection signal="body_entered" from="Rat/PlayerCloseDetectionArea" to="Rat" method="_on_PlayerCloseDetectionArea_body_entered"]
@@ -165,3 +172,5 @@ wait_time = 2.0
 [connection signal="body_entered" from="Rat/PlayerNearDetectionArea" to="Rat" method="_on_PlayerNearDetectionArea_body_entered"]
 [connection signal="body_exited" from="Rat/PlayerNearDetectionArea" to="Rat" method="_on_PlayerNearDetectionArea_body_exited"]
 [connection signal="timeout" from="Rat/attack_timer" to="Rat" method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="Rat/idle_timer" to="Rat" method="_on_idle_timer_timeout"]
+[connection signal="timeout" from="Rat/pace_timer" to="Rat" method="_on_pace_timer_timeout"]

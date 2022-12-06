@@ -1,3 +1,4 @@
+
 extends KinematicBody2D
 
 var GRAVITY = 35
@@ -9,6 +10,7 @@ var usedflap = false
 var prev_dir = false # True = Left, False = Right
 var isAttacking = false
 
+var ducky_retrieved = false
 var knifeunlocked = false
 # weapons
 var weapon = 0
@@ -18,6 +20,7 @@ var health = 100
 var is_dead = false
 var is_stunned = false
 var is_immune = false
+var can_attack = true
 var game_over = false
 
 var velocity = Vector2()
@@ -29,14 +32,23 @@ func _physics_process(delta):
 		get_tree().change_scene("res://Scenes/World/World.tscn")
 	if Input.is_action_just_pressed("esc"):
 		get_tree().change_scene("res://Scenes/Menus/Menu.tscn")
-	if is_dead:
+	if ducky_retrieved:
+		game_over = true
+		handle_win()
+	elif is_dead:
 		handle_death()
-		get_tree().change_scene("res://Scenes/Dead Cutscene/DeadVideoPlayer.tscn")
 	elif is_stunned:
 		play_hurt()
-	elif not game_over: 
+	if not game_over: 
 		get_input()	
 	velocity = move_and_slide(velocity, Vector2.UP)
+	
+func handle_win():
+	if not is_on_floor():
+		velocity.y += GRAVITY
+	$Head.play("Head Win")
+	$Butt.play("Win")
+	#print("handling win")
 
 func handle_death():
 	$Head.play("Dead")
@@ -77,18 +89,19 @@ func get_input():
 	velocity.x = clamp(velocity.x, -maxspeed, maxspeed)
 	_uncrouch()
 	
-	if Input.is_action_just_pressed("attack"):
-		print("attacking")
-		
+	if Input.is_action_just_pressed("attack") and can_attack and not is_stunned:		
 		if weapon == 0:
-			$Head.play("Peck")
+			if $Head.animation != "Peck":
+				$Head.play("Peck")
 			$AttackRange/PeckRange.disabled = false
 		elif weapon == 1:
-			$Head.play("Knife Attack")
+			if $Head.animation != "Knife Attack":
+				$Head.play("Knife Attack")
 			$AttackRange/KnifeRange.disabled = false
 		isAttacking = true
-		
-	if not isAttacking:
+		can_attack = false
+		$attack_delay.start() 
+	if not isAttacking and not is_stunned:
 		if weapon == 0:
 			$Head.play("Head Idle")
 		elif weapon == 1:
@@ -145,37 +158,35 @@ func hurt(damage):
 	health -= damage
 	health = clamp(health, 0, 100)
 	print("player hurt - current health ", health)
-	get_parent().get_node("CanvasLayer/Label").text = str(health)
+	get_parent().get_node("CanvasLayer/Label").text = ("HEALTH: " + str(health))
 	is_stunned = true
+	$stun_timer.start()
 	if health <= 0:
 		is_dead = true
 
 func play_hurt():
 	if $Head.animation != "Hurt":
 		$Head.play("Hurt")
-	if $Butt.animation != "Hurt":
-		$Butt.play("Hurt")
+	$Butt.play("Hurt")
 
 func _on_Head_animation_finished():
+	if $Head.animation == "Head Win":
+		get_tree().change_scene("res://Scenes/Won Cutscene/WonVideoPlayer.tscn")
 	if $Head.animation == "Peck":
 		$AttackRange/PeckRange.disabled = true
 		isAttacking = false
 	if $Head.animation == "Knife Attack":
 		$AttackRange/KnifeRange.disabled = true
-		isAttacking = false
-	if $Head.animation == "Hurt":
-		is_stunned = false
-		$invincibility_timer.start()
-		$Head.play("Head Idle")
-		is_immune = true
+		isAttacking = false		
 	if $Head.animation == "Dead":
 		self.queue_free()
 		game_over = true
+		get_tree().change_scene("res://Scenes/Dead Cutscene/DeadVideoPlayer.tscn")
 
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("hurtbox"):
-		print("something took damage")
+		#print("something took damage")
 		if weapon == 0:
 			body.take_damage(10)
 		elif weapon == 1:
@@ -188,9 +199,30 @@ func _on_PickupRange_area_entered(area):
 				knifeunlocked = true
 				area.get_parent().queue_free()
 				weapon = 1
+		elif area.is_in_group("item"):
+			if area.is_in_group("ducky"):
+				#print("duck won")
+				ducky_retrieved = true
+				area.get_parent().queue_free()
 
 
 func _on_invincibility_timer_timeout():
 	is_immune = false
 	$invincibility_timer.stop()
+	#print("invincibility end")
 	
+
+
+func _on_attack_delay_timeout():
+	can_attack = true
+	$attack_delay.stop()
+	#print("attack delay end")
+
+
+func _on_stun_timer_timeout():
+	is_stunned = false
+	$stun_timer.stop()
+	$invincibility_timer.start()
+	$Head.play("Head Idle")
+	#print("stun end")
+	is_immune = true

@@ -1,5 +1,7 @@
 extends "res://Enemies/enemy.gd"
 
+var rng = RandomNumberGenerator.new()
+
 func _ready():
 	health = 85
 	mob_damage = 7
@@ -38,6 +40,22 @@ func _on_AnimatedSprite_animation_finished():
 		$attack_timer.start()
 		idle()
 
-func _on_attack_timer_timeout():
+func _on_attack_timer_timeout(): 
 	just_attacked = false
 	$attack_timer.stop()
+
+
+func _on_idle_timer_timeout():
+	turn_around()
+	pace = true
+	idle = false
+	$pace_timer.wait_time = rng.randf_range(3,10)
+	$idle_timer.stop()
+	$pace_timer.start()
+
+
+func _on_pace_timer_timeout():
+	idle = true
+	pace = false
+	$pace_timer.stop()
+	$idle_timer.start()

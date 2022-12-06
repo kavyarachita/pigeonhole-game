@@ -8,7 +8,7 @@
 [ext_resource path="res://Sprites/Squirrel Sprite/Untitled_Artwork (4).png" type="Texture" id=6]
 [ext_resource path="res://Sprites/Squirrel Sprite/Untitled_Artwork (3).png" type="Texture" id=7]
 [ext_resource path="res://Enemies/Rat/turn towards player.gd" type="Script" id=8]
-[ext_resource path="res://Enemies/Rat/turn around.gd" type="Script" id=9]
+[ext_resource path="res://Enemies/Rat/idle.gd" type="Script" id=9]
 [ext_resource path="res://Enemies/Rat/is dead.gd" type="Script" id=10]
 [ext_resource path="res://Enemies/Rat/move forward.gd" type="Script" id=11]
 [ext_resource path="res://Enemies/Rat/death animation.gd" type="Script" id=12]
@@ -61,10 +61,10 @@ animations = [ {
 extents = Vector2( 107.5, 114.5 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 160, 55 )
+extents = Vector2( 160, 101 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 600, 50 )
+extents = Vector2( 610, 107.5 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -139,7 +139,7 @@ script = ExtResource( 22 )
 [node name="move forward" type="Node" parent="Squirrel/BehaviorTreeRoot/SelectorComposite/PatrolArea"]
 script = ExtResource( 11 )
 
-[node name="turn around" type="Node" parent="Squirrel/BehaviorTreeRoot/SelectorComposite/PatrolArea"]
+[node name="idle" type="Node" parent="Squirrel/BehaviorTreeRoot/SelectorComposite/PatrolArea"]
 script = ExtResource( 9 )
 
 [node name="PlayerCloseDetectionArea" type="Area2D" parent="Squirrel"]
@@ -147,7 +147,7 @@ collision_layer = 2
 script = ExtResource( 16 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Squirrel/PlayerCloseDetectionArea"]
-position = Vector2( 0, 40 )
+position = Vector2( 0, -6 )
 shape = SubResource( 3 )
 
 [node name="PlayerNearDetectionArea" type="Area2D" parent="Squirrel"]
@@ -155,11 +155,17 @@ collision_layer = 2
 script = ExtResource( 16 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Squirrel/PlayerNearDetectionArea"]
-position = Vector2( 0, 40 )
 shape = SubResource( 4 )
 
 [node name="attack_timer" type="Timer" parent="Squirrel"]
 wait_time = 2.0
+
+[node name="idle_timer" type="Timer" parent="Squirrel"]
+wait_time = 2.0
+
+[node name="pace_timer" type="Timer" parent="Squirrel"]
+wait_time = 3.0
+autostart = true
 
 [connection signal="animation_finished" from="Squirrel/AnimatedSprite" to="Squirrel" method="_on_AnimatedSprite_animation_finished"]
 [connection signal="body_entered" from="Squirrel/PlayerCloseDetectionArea" to="Squirrel" method="_on_PlayerCloseDetectionArea_body_entered"]
@@ -167,3 +173,5 @@ wait_time = 2.0
 [connection signal="body_entered" from="Squirrel/PlayerNearDetectionArea" to="Squirrel" method="_on_PlayerNearDetectionArea_body_entered"]
 [connection signal="body_exited" from="Squirrel/PlayerNearDetectionArea" to="Squirrel" method="_on_PlayerNearDetectionArea_body_exited"]
 [connection signal="timeout" from="Squirrel/attack_timer" to="Squirrel" method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="Squirrel/idle_timer" to="Squirrel" method="_on_idle_timer_timeout"]
+[connection signal="timeout" from="Squirrel/pace_timer" to="Squirrel" method="_on_pace_timer_timeout"]
