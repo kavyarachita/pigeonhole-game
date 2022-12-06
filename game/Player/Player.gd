@@ -3,7 +3,7 @@ extends KinematicBody2D
 var GRAVITY = 35
 const MAXFALLSPEED = 3000
 var maxspeed = 500
-const JUMPFORCE = 1000
+const JUMPFORCE = 1150
 var speed = 20
 var usedflap = false
 var prev_dir = false # True = Left, False = Right
@@ -43,7 +43,6 @@ func handle_death():
 	
 func _flip_hitboxes():
 	scale.x *= -1
-	$Camera2D.scale.x *= -1
 
 func _crouch():
 	$CollisionShape2D2.position.y = -7
@@ -146,7 +145,7 @@ func hurt(damage):
 	health -= damage
 	health = clamp(health, 0, 100)
 	print("player hurt - current health ", health)
-	$Camera2D/Label.text = str(health)
+	get_parent().get_node("CanvasLayer/Label").text = str(health)
 	is_stunned = true
 	if health <= 0:
 		is_dead = true
