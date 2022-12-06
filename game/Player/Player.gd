@@ -51,6 +51,7 @@ func handle_win():
 	#print("handling win")
 
 func handle_death():
+	game_over = true
 	$Head.play("Dead")
 	
 func _flip_hitboxes():
@@ -140,14 +141,16 @@ func get_input():
 		
 	if Input.is_action_just_pressed("knife") and knifeunlocked:
 		weapon = 1
+		get_parent().get_node("CanvasLayer/Knife1/Label2").text = "1 to Unequip"
 	elif Input.is_action_just_pressed("unequip"):
 		weapon = 0
+		get_parent().get_node("CanvasLayer/Knife1/Label2").text = "2 to Equip"
 		
 	if is_on_floor():
 		usedflap = false
 		if Input.is_action_just_pressed("jump"):
 			velocity.y = -JUMPFORCE
-	else: 
+	if not is_on_floor(): 
 		$Butt.play("Falling")
 		if usedflap == false and Input.is_action_just_pressed("jump"):
 			velocity.y = -JUMPFORCE
@@ -159,10 +162,11 @@ func hurt(damage):
 	health = clamp(health, 0, 100)
 	print("player hurt - current health ", health)
 	get_parent().get_node("CanvasLayer/Label").text = ("HEALTH: " + str(health))
-	is_stunned = true
-	$stun_timer.start()
 	if health <= 0:
 		is_dead = true
+	else:
+		$stun_timer.start()
+		is_stunned = true
 
 func play_hurt():
 	if $Head.animation != "Hurt":
@@ -197,8 +201,8 @@ func _on_PickupRange_area_entered(area):
 		if area.is_in_group("weapon"):
 			if area.is_in_group("knife"):
 				knifeunlocked = true
+				get_parent().get_node("CanvasLayer/Knife1").visible = true
 				area.get_parent().queue_free()
-				weapon = 1
 		elif area.is_in_group("item"):
 			if area.is_in_group("ducky"):
 				#print("duck won")
